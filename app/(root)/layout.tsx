@@ -1,8 +1,10 @@
 import LeftSidebar from "@/components/LeftSidebar";
-import RightSidebar from "../../components/RightSidebar";
+import RightSidebar from "@/components/RightSidebar";
 import Image from "next/image";
 
-export default async function Layout({ children }: Readonly<{
+export default function RootLayout({
+  children,
+}: Readonly<{
   children: React.ReactNode;
 }>) {
   return (

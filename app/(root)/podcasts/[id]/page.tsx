@@ -8,7 +8,7 @@ import { DetailPlayerSkeleton } from "@/components/skeletons";
 import { PodcastDetailsProps } from "@/types";
 
 
-export default async function PodcastDetails({ id }: PodcastDetailsProps) {
+export default function PodcastDetails({ id }: PodcastDetailsProps) {
   // const id = params.id;
   // const podcast = await fetchPodcastById(id);
   // TODO: get from data
