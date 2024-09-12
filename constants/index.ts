@@ -6,8 +6,8 @@ export const sidebarLinks = [
     },
     {
       imgURL: "/icons/discover.svg",
-      route: "/explore",
-      label: "Explore",
+      route: "/discover",
+      label: "Discover",
     },
     {
       imgURL: "/icons/profile.svg",

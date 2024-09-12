@@ -3,7 +3,7 @@ import Searchbar from "@/components/Searchbar";
 import EmptyState from "@/components/EmptyState";
 // import { fetchExplorePodcasts } from "@/lib/data";
 
-export default function Explore({ search }: {search: boolean}) {
+export default function Discover({ search }: {search: boolean}) {
   // const podcastsData = await fetchExplorePodcasts();
 
   return (
