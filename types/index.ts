@@ -38,7 +38,10 @@ export interface GenerateThumbnailProps {
   setImagePrompt: Dispatch<SetStateAction<string>>;
 }
 
-interface ApiError {
-  status: number;
-  message: string;
+export interface GenerateThumbnailProps {
+  setImage: Dispatch<SetStateAction<string>>;
+  setImageStorageId: Dispatch<SetStateAction<Id<"_storage"> | null>>;
+  image: string;
+  imagePrompt: string;
+  setImagePrompt: Dispatch<SetStateAction<string>>;
 }
