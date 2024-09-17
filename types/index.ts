@@ -10,10 +10,10 @@ export interface EmptyStateProps {
 }
 
 export interface PodcastCardProps {
+    podcastId: Id<"podcasts">;
     imgUrl: string;
     title: string;
     description: string;
-    podcastId: Id<"podcasts">;
 }
 
 export interface PodcastDetailsProps {
@@ -44,4 +44,8 @@ export interface GenerateThumbnailProps {
   image: string;
   imagePrompt: string;
   setImagePrompt: Dispatch<SetStateAction<string>>;
+}
+
+export interface PodcastGridProps {
+  items: PodcastCardProps[]
 }
