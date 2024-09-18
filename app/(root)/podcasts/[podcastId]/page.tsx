@@ -28,7 +28,7 @@ const PodcastDetails = ({ params: { podcastId } }: { params: { podcastId: Id<'po
     <section className="flex w-full flex-col">
       <header className="mt-9 flex items-center justify-between">
         <h1 className="text-20 font-bold text-white-1">
-          Currenty Playing
+          Currently Playing
         </h1>
         <figure className="flex gap-3">
           <Image
