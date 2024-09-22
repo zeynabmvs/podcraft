@@ -28,7 +28,7 @@ export const getTopUserByPodcastCount = query({
       user.map(async (u) => {
         const podcasts = await ctx.db
           .query("podcasts")
-          .filter((q) => q.eq(q.field("authorId"), u._id))
+          .filter((q) => q.eq(q.field("user"), u._id))
           .collect();
 
           const sortedPodcasts = podcasts.sort((a, b) => b.views - a.views);
