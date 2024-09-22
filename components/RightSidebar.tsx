@@ -18,8 +18,6 @@ const RightSidebar = () => {
   const topPodcasters = useQuery(api.users.getTopUserByPodcastCount);
   const router = useRouter();
 
-  console.log("topPodcasters", topPodcasters)
-
   const { audio } = useAudio();
 
   return (

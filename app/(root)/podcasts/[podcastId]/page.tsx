@@ -17,8 +17,6 @@ const PodcastDetails = ({
   params: { podcastId: Id<"podcasts"> };
 }) => {
   const { user } = useUser();
-  console.log(user);
-
   const podcast = useQuery(api.podcasts.getPodcastById, { podcastId });
 
   const similarPodcasts = useQuery(api.podcasts.getPodcastByVoiceType, {
