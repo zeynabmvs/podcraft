@@ -14,7 +14,7 @@ const LeftSidebar = () => {
   const { signOut } = useClerk();
 
   return (
-    <aside className="flex flex-col justify-between bg-black-1 w-1/6 h-full p-4">
+    <aside className="hidden md:flex flex-col justify-between bg-black-1 w-1/6 h-full p-4 ">
       <nav>
         <Link
           href="/"
