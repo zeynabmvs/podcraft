@@ -7,14 +7,19 @@ import { usePathname, useRouter } from "next/navigation";
 import { clsx } from "clsx";
 import { SignedIn, SignedOut, useClerk } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
+import { useAudio } from "@/providers/AudioProvider";
+import { cn } from "@/lib/utils";
 
 const LeftSidebar = () => {
   const pathname = usePathname();
   const router = useRouter();
   const { signOut } = useClerk();
+  const { audio } = useAudio();
 
   return (
-    <aside className="hidden md:flex flex-col justify-between bg-black-1 w-1/6 h-full p-4 ">
+    <aside className={cn("left_sidebar h-[calc(100vh-5px)]", {
+      'h-[calc(100vh-120px)]': audio?.audioUrl
+    })}>
       <nav>
         <Link
           href="/"
@@ -22,7 +27,7 @@ const LeftSidebar = () => {
         >
           <Image src="/logo.png" width={40} height={40} alt="logo" />
           <h1 className="text-24 font-extrabold text-white max-lg:hidden">
-            Podcast
+            Podcraft
           </h1>
         </Link>
 

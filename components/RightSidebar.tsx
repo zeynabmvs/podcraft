@@ -22,7 +22,7 @@ const RightSidebar = () => {
 
   return (
     <section className={cn('right_sidebar h-[calc(100vh-5px)]', {
-      'h-[calc(100vh-140px)]': ''
+      'h-[calc(100vh-120px)]': ''
     })}>
       <SignedIn>
         <Link href={`/profile/${user?.id}`} className="flex gap-3 pb-12">
@@ -38,8 +38,8 @@ const RightSidebar = () => {
           </div>
         </Link>
       </SignedIn>
-      <section>
-        <Header headerTitle="Fans Like You" />
+      <section className='flex flex-col gap-2'>
+        <Header headerTitle="Fans Like You"/>
         <Carousel fansLikeDetail={topPodcasters!}/>
       </section>
       <section className="flex flex-col gap-8 pt-12">

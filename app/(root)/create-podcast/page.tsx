@@ -120,7 +120,7 @@ const CreatePodcast = () => {
                 <FormItem className="flex flex-col gap-2.5">
                   <FormLabel className="text-16 font-bold text-white-1">Title</FormLabel>
                   <FormControl>
-                    <Input className="input-class focus-visible:ring-offset-primary-1" placeholder="JSM Pro Podcast" {...field} />
+                    <Input className="input-class focus-visible:ring-offset-primary-1" placeholder="Awsome podcast" {...field} />
                   </FormControl>
                   <FormMessage className="text-white-1" />
                 </FormItem>
