@@ -127,3 +127,14 @@ export type UseDotButtonType = {
   scrollSnaps: number[];
   onDotButtonClick: (index: number) => void;
 };
+
+
+export type PodcastRowItemProps = {
+  imgUrl: string;
+  title: string;
+  description: string;
+  podcastId: Id<"podcasts">;
+  index: number,
+  views: number,
+  audioDuration: number;
+}

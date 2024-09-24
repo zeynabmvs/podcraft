@@ -17,8 +17,6 @@ const LeftSidebar = () => {
   const { audio } = useAudio();
   const { user } = useUser();
 
-  console.log(user);
-
   return (
     <aside
       className={cn("left_sidebar h-[calc(100vh-5px)]", {

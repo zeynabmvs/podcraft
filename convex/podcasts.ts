@@ -205,3 +205,10 @@ export const deletePodcast = mutation({
     return await ctx.db.delete(args.podcastId);
   },
 });
+
+// this query will get the 4 latest podcasts.
+export const getLatestPodcasts = query({
+  handler: async (ctx) => {
+    return await ctx.db.query("podcasts").order("desc").take(4);
+  },
+});
