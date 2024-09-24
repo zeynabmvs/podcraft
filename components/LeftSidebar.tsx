@@ -5,7 +5,7 @@ import Image from "next/image";
 import { sidebarLinks } from "@/constants/index";
 import { usePathname, useRouter } from "next/navigation";
 import { clsx } from "clsx";
-import { SignedIn, SignedOut, useClerk } from "@clerk/nextjs";
+import { SignedIn, SignedOut, useClerk, useUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { useAudio } from "@/providers/AudioProvider";
 import { cn } from "@/lib/utils";
@@ -15,11 +15,16 @@ const LeftSidebar = () => {
   const router = useRouter();
   const { signOut } = useClerk();
   const { audio } = useAudio();
+  const { user } = useUser();
+
+  console.log(user);
 
   return (
-    <aside className={cn("left_sidebar h-[calc(100vh-5px)]", {
-      'h-[calc(100vh-120px)]': audio?.audioUrl
-    })}>
+    <aside
+      className={cn("left_sidebar h-[calc(100vh-5px)]", {
+        "h-[calc(100vh-120px)]": audio?.audioUrl,
+      })}
+    >
       <nav>
         <Link
           href="/"
@@ -51,9 +56,27 @@ const LeftSidebar = () => {
             </Link>
           );
         })}
+
+        <SignedIn>
+          {user && (
+            <Link
+              href={`/profile/${user.id}`}
+              key="my-profile"
+              className={clsx(
+                "flex gap-3 items-center py-4 max-lg:px-4 justify-center lg:justify-start",
+                {
+                  "bg-nav-focus border-r-4 border-primary-1": (pathname === `/profile/${user.id}` || pathname.startsWith(`/profile/${user.id}/`))
+                }
+              )}
+            >
+              <Image src='/icons/profile.svg' width={24} height={24} alt="My profile" />
+              <p className="hidden lg:block">My profile</p>
+            </Link>
+          )}
+        </SignedIn>
       </nav>
 
-      <div>
+      <div className="mr-8">
         <SignedOut>
           <div className="flex-center w-full pb-14">
             <Button
