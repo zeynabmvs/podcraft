@@ -15,10 +15,12 @@ export default function Home() {
 
   return (
     <div className="mt-9 flex flex-col gap-9 md:overflow-hidden">
+
+      {/* Trending podcasts */}
       <section className="flex flex-col gap-5">
         <h1 className="text-20 font-bold text-white-1">Trending Podcasts</h1>
         <div className="podcast_grid">
-          {trendingPodcasts?.map(
+          {trendingPodcasts?.slice(0, 4).map(
             ({ _id, podcastTitle, podcastDescription, imageUrl }) => (
               <PodcastCard
                 key={_id}
@@ -32,6 +34,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Latest podcasts */}
       <section>
         <Header headerTitle="Latest Podcasts" titleClassName="text-20 font-bold text-white-1" />
         <div>
@@ -61,6 +64,25 @@ export default function Home() {
           )}
         </div>
       </section>
+
+      {/* popular podcasts */}
+      <section className="flex flex-col gap-5">
+        <h1 className="text-20 font-bold text-white-1">Popular Podcasts</h1>
+        <div className="podcast_grid">
+          {trendingPodcasts?.map(
+            ({ _id, podcastTitle, podcastDescription, imageUrl }) => (
+              <PodcastCard
+                key={_id}
+                imgUrl={imageUrl as string}
+                title={podcastTitle}
+                description={podcastDescription}
+                podcastId={_id}
+              />
+            )
+          )}
+        </div>
+      </section>
+
     </div>
   );
 }
