@@ -50,14 +50,23 @@ export interface ProfilePodcastProps {
   listeners: number;
 }
 
+
 export interface GeneratePodcastProps {
-  voiceType: string;
   setAudio: Dispatch<SetStateAction<string>>;
   audio: string;
   setAudioStorageId: Dispatch<SetStateAction<Id<"_storage"> | null>>;
   voicePrompt: string;
+  voiceType: string;
   setVoicePrompt: Dispatch<SetStateAction<string>>;
+  setVoiceType: Dispatch<SetStateAction<string| null>>;
   setAudioDuration: Dispatch<SetStateAction<number>>;
+}
+
+export interface UseGeneratePodcastProps {
+  voiceType: string;
+  setAudio: Dispatch<SetStateAction<string>>;
+  setAudioStorageId: Dispatch<SetStateAction<Id<"_storage"> | null>>;
+  voicePrompt: string;
 }
 
 export interface GenerateThumbnailProps {

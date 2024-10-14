@@ -143,6 +143,7 @@ const GenerateThumbnail = ({
         <div className="image_div" onClick={() => imageRef?.current?.click()}>
           <Input
             type="file"
+            accept="image/*"
             className="hidden"
             ref={imageRef}
             onChange={(e) => uploadImage(e)}
@@ -156,12 +157,12 @@ const GenerateThumbnail = ({
             />
           ) : (
             <div className="text-16 flex-center font-medium text-white-1">
-              Uploading
+              Uploading...
               <Loader size={20} className="animate-spin ml-2" />
             </div>
           )}
           <div className="flex flex-col items-center gap-1">
-            <h2 className="text-12 font-bold text-primary-1">Click to upload</h2>
+            <h2 className="text-12 font-bold text-primary-1">Click to upload image</h2>
             <p className="text-12 font-normal text-gray-1">
               SVG, PNG, JPG, or GIF (max. 1080x1080px)
             </p>

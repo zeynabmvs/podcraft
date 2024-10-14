@@ -8,22 +8,12 @@ import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
-import { cn } from "@/lib/utils"
 import { useState } from "react"
 import { Textarea } from "@/components/ui/textarea"
 import GeneratePodcast from "@/components/GeneratePodcast"
@@ -35,7 +25,6 @@ import { useMutation } from "convex/react"
 import { api } from "@/convex/_generated/api"
 import { useRouter } from "next/navigation"
 
-const voiceCategories = ['alloy', 'shimmer', 'nova', 'echo', 'fable', 'onyx'];
 
 const formSchema = z.object({
   podcastTitle: z.string().min(2),
@@ -72,7 +61,8 @@ const CreatePodcast = () => {
   async function onSubmit(data: z.infer<typeof formSchema>) {
     try {
       setIsSubmitting(true);
-      if(!audioUrl || !imageUrl || !voiceType) {
+      
+      if(!audioUrl || !imageUrl) {
         toast({
           title: 'Please generate audio and image',
         })
@@ -85,7 +75,7 @@ const CreatePodcast = () => {
         podcastDescription: data.podcastDescription,
         audioUrl,
         imageUrl,
-        voiceType,
+        voiceType: voiceType!,
         imagePrompt,
         voicePrompt,
         views: 0,
@@ -112,7 +102,7 @@ const CreatePodcast = () => {
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="mt-12 flex w-full flex-col">
-          <div className="flex flex-col gap-[30px] border-b border-black-5 pb-10">
+          <div className="flex flex-col gap-[30px] pb-2.5">
             <FormField
               control={form.control}
               name="podcastTitle"
@@ -127,7 +117,7 @@ const CreatePodcast = () => {
               )}
             />
 
-            <div className="flex flex-col gap-2.5">
+            {/* <div className="flex flex-col gap-2.5">
               <Label className="text-16 font-bold text-white-1">
                 Select AI Voice
               </Label>
@@ -151,7 +141,7 @@ const CreatePodcast = () => {
                   />
                 )}
               </Select>
-            </div>
+            </div> */}
 
             <FormField
               control={form.control}
@@ -172,6 +162,7 @@ const CreatePodcast = () => {
                 setAudioStorageId={setAudioStorageId}
                 setAudio={setAudioUrl}
                 voiceType={voiceType!}
+                setVoiceType={setVoiceType}
                 audio={audioUrl}
                 voicePrompt={voicePrompt}
                 setVoicePrompt={setVoicePrompt}
