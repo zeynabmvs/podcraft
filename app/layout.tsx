@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Manrope } from "next/font/google";
+import { Manrope } from "next/font/google";
 import ConvexClerkProvider from "@/providers/ConvexClerkProvider";
 import "@/app/globals.css";
 import AudioProvider from "@/providers/AudioProvider";
@@ -7,7 +7,7 @@ import AudioProvider from "@/providers/AudioProvider";
 const manrope = Manrope({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Podcast App",
+  title: "Podcraft",
   description: "Listen and share podcasts",
   icons: {
     icon: "/logo.png",
