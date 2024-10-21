@@ -32,7 +32,6 @@ export default function NotFound(): JSX.Element {
                     alt="Page Not Found"
                     width={321}
                     height={326}
-                    priority
                   />
                   <Image
                     className="absolute left-1/2 -translate-x-1/2  top-1/2 -translate-y-1/2 z-1 scale-125"
@@ -40,7 +39,6 @@ export default function NotFound(): JSX.Element {
                     alt=""
                     width={865}
                     height={904}
-                    priority
                   />
                 </div>
               </div>
