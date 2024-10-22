@@ -16,7 +16,7 @@ export default function Error({
 
   return (
     <div>
-      <h2>There was an error fetching data!</h2>
+      <h2>There was an error creating the podcast</h2>
     </div>
   );
 }
