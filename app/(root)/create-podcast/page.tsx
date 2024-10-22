@@ -14,7 +14,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Textarea } from "@/components/ui/textarea"
 import GeneratePodcast from "@/components/GeneratePodcast"
 import GenerateThumbnail from "@/components/GenerateThumbnail"
@@ -40,7 +40,7 @@ const CreatePodcast = () => {
   const [audioUrl, setAudioUrl] = useState('');
   const [audioStorageId, setAudioStorageId] = useState<Id<"_storage"> | null>(null)
   const [audioDuration, setAudioDuration] = useState(0);
-  
+
   const [voiceType, setVoiceType] = useState<string | null>(null);
   const [voicePrompt, setVoicePrompt] = useState('');
   
@@ -115,32 +115,6 @@ const CreatePodcast = () => {
                 </FormItem>
               )}
             />
-
-            {/* <div className="flex flex-col gap-2.5">
-              <Label className="text-16 font-bold text-white-1">
-                Select AI Voice
-              </Label>
-
-              <Select onValueChange={(value) => setVoiceType(value)}>
-                <SelectTrigger className={cn('text-16 w-full border-none bg-black-1 text-gray-1 focus-visible:ring-offset-primary-1')}>
-                  <SelectValue placeholder="Select AI Voice" className="placeholder:text-gray-1 " />
-                </SelectTrigger>
-                <SelectContent className="text-16 border-none bg-black-1 font-bold text-white-1 focus:ring-primary-1">
-                  {voiceCategories.map((category) => (
-                    <SelectItem key={category} value={category} className="capitalize focus:bg-primary-1">
-                      {category}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-                {voiceType && (
-                  <audio 
-                    src={`/${voiceType}.mp3`}
-                    autoPlay
-                    className="hidden"
-                  />
-                )}
-              </Select>
-            </div> */}
 
             <FormField
               control={form.control}

@@ -109,7 +109,7 @@ const GeneratePodcast = ({
     onUploadSuccess: (result) => {
       console.log(fileUrl);
 
-      setAudio(fileUrl!);
+      setAudio(result.url!);
       setAudioStorageId(fileStorageId);
       setVoiceType("none");
       toast({
