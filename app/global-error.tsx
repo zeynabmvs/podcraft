@@ -1,18 +1,18 @@
-'use client'
- 
-export default function GlobalError({
-  error,
-  reset,
-}: {
-  error: Error & { digest?: string }
-  reset: () => void
-}) {
+"use client";
+
+import { useEffect } from "react";
+
+export default function GlobalError({ error, reset }: { error: Error; reset: () => void }) {
+  // useEffect(() => {
+  //   console.error("Global error:", error);
+  // }, [error]);
+
   return (
     <html>
       <body>
-        <h2>Something went wrong!</h2>
-        <button onClick={() => reset()}>Try again</button>
+        <h1>Something went wrong Global!</h1>
+        <button onClick={() => reset()}>Try Again</button>
       </body>
     </html>
-  )
+  );
 }

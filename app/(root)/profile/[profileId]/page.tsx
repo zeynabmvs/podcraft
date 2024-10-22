@@ -54,7 +54,7 @@ const ProfilePage = ({
           </div>
         ) : (
           <EmptyState
-            title="You have not created any podcasts yet"
+            title="You haven't created any podcasts yet"
             buttonLink="/create-podcast"
             buttonText="Create Podcast"
           />
