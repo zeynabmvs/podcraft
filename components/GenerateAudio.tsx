@@ -1,15 +1,16 @@
-import { UseGeneratePodcastProps } from "@/types";
-import { GeneratePodcastProps } from "@/types";
+import { UseGenerateAudioProps } from "@/types";
+import { GenerateAudioProps } from "@/types";
 import React, { useState, useRef, useEffect } from "react";
+import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
 import { Loader } from "lucide-react";
 import { useAction, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { v4 as uuidv4 } from "uuid";
-import { toast, useToast } from "@/hooks/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
-import { Label } from "@/components/ui/label";
+import { useUploadFiles } from "@xixixao/uploadstuff/react";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -18,16 +19,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useUploadFiles } from "@xixixao/uploadstuff/react";
-import useFileUpload from "@/hooks/use-file-upload";
 import Image from "next/image";
 
-const useGeneratePodcast = ({
+const voiceCategories = ["alloy", "shimmer", "nova", "echo", "fable", "onyx"];
+
+const useGenerateAudio = ({
   setAudio,
   voiceType,
   voicePrompt,
   setAudioStorageId,
-}: UseGeneratePodcastProps) => {
+}: UseGenerateAudioProps) => {
   const [isGenerating, setIsGenerating] = useState(false);
   const { toast } = useToast();
 
@@ -38,13 +39,13 @@ const useGeneratePodcast = ({
 
   const getAudioUrl = useMutation(api.podcasts.getUrl);
 
-  const generatePodcast = async () => {
+  const generateAudio = async () => {
     setIsGenerating(true);
     setAudio("");
 
-    if (!voicePrompt || !voiceType) {
+    if (!voicePrompt) {
       toast({
-        title: "Please provide a prompt and ai voice to generate a podcast",
+        title: "Please provide a voiceType to generate a podcast",
       });
       return setIsGenerating(false);
     }
@@ -80,11 +81,10 @@ const useGeneratePodcast = ({
     }
   };
 
-  return { isGenerating, generatePodcast };
+  return { isGenerating, generateAudio };
 };
-const voiceCategories = ["alloy", "shimmer", "nova", "echo", "fable", "onyx"];
 
-const GeneratePodcast = ({
+const GenerateAudio = ({
   setAudioStorageId,
   setAudio,
   audio,
@@ -93,37 +93,71 @@ const GeneratePodcast = ({
   setAudioDuration,
   voiceType,
   setVoiceType,
-}: GeneratePodcastProps) => {
+}: GenerateAudioProps) => {
+  const { isGenerating, generateAudio } = useGenerateAudio({
+    setAudio,
+    voiceType,
+    voicePrompt,
+    setAudioStorageId,
+  });
   const [isAiAudio, setIsAiAudio] = useState(false);
   const voiceTypeRef = useRef<HTMLAudioElement | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
+  const [isFileUploading, setIsFileUploading] = useState(false);
 
-  const {
-    fileInputRef,
-    fileUrl,
-    isUploading,
-    fileStorageId,
-    triggerFileSelect,
-    handleFileSelection,
-  } = useFileUpload({
-    onUploadSuccess: (result) => {
-      console.log(fileUrl);
+  const generateUploadUrl = useMutation(api.files.generateUploadUrl);
+  const { startUpload } = useUploadFiles(generateUploadUrl);
 
-      setAudio(result.url!);
-      setAudioStorageId(fileStorageId);
+  const getImageUrl = useMutation(api.podcasts.getUrl);
+
+  const triggerFileSelect = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
+  const handleFile = async (blob: Blob, fileName: string) => {
+    setIsFileUploading(true);
+    setAudio("");
+
+    try {
+      const file = new File([blob], fileName, { type: "image/png" });
+
+      const uploaded = await startUpload([file]);
+      const storageId = (uploaded[0].response as any).storageId;
+
+      setAudioStorageId(storageId);
+
+      const imageUrl = await getImageUrl({ storageId });
+
+      setAudio(imageUrl!);
+      setIsFileUploading(false);
       setVoiceType("none");
-      toast({
-        title: "File uploaded successfully",
-      });
-      console.log("File uploaded successfully: ", result);
-    },
-    onUploadError: (error) => {
-      console.error("Error during file upload: ", error);
-      toast({
-        title: "Error during file upload, Please ty again later",
-      });
-    },
-  });
+      toast({ title: "File uploaded successfuly" });
+    } catch (error) {
+      console.log(error);
+      setIsFileUploading(false);
+      toast({ title: "Error uploading, Try again later", variant: "destructive" });
+    }
+  };
+
+
+  const handleFileSelection = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
+    try {
+      const files = e.target.files;
+      if (!files) return;
+      const file = files[0];
+      const blob = await file.arrayBuffer().then((ab) => new Blob([ab]));
+
+      handleFile(blob, file.name);
+    } catch (error) {
+      console.log(error);
+      toast({ title: "Error uploading", variant: "destructive" });
+    }
+  };
 
   useEffect(() => {
     if (voiceType && voiceTypeRef.current) {
@@ -131,13 +165,6 @@ const GeneratePodcast = ({
       voiceTypeRef.current.play();
     }
   }, [voiceType]);
-
-  const { isGenerating, generatePodcast } = useGeneratePodcast({
-    setAudio,
-    voiceType,
-    voicePrompt,
-    setAudioStorageId,
-  });
 
   return (
     <>
@@ -219,7 +246,7 @@ const GeneratePodcast = ({
             <Button
               type="submit"
               className="text-16 bg-primary-1 py-4 font-bold text-white-1"
-              onClick={generatePodcast}
+              onClick={generateAudio}
             >
               {isGenerating ? (
                 <>
@@ -253,7 +280,8 @@ const GeneratePodcast = ({
               ref={fileInputRef}
               onChange={handleFileSelection}
             />
-            {!isUploading ? (
+
+            {!isFileUploading ? (
               <Image
                 src="/icons/upload-image.svg"
                 width={40}
@@ -269,7 +297,7 @@ const GeneratePodcast = ({
 
             <div className="flex flex-col items-center gap-1">
               <h2 className="text-12 font-bold text-primary-1">
-                Click to upload audio
+                {!isFileUploading ? "Click to upload audio" : " " }
               </h2>
               <p className="text-12 font-normal text-gray-1">
                 format: MP3, WAV (max. 2000KB)
@@ -277,10 +305,10 @@ const GeneratePodcast = ({
             </div>
           </div>
 
-          {fileUrl && (
+          {audio && (
             <audio
               controls
-              src={fileUrl}
+              src={audio}
               className="mt-5"
               onLoadedMetadata={(e) =>
                 setAudioDuration(e.currentTarget.duration)
@@ -293,4 +321,4 @@ const GeneratePodcast = ({
   );
 };
 
-export default GeneratePodcast;
+export default GenerateAudio;

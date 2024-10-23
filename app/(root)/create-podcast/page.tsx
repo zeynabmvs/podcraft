@@ -16,7 +16,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { useEffect, useState } from "react"
 import { Textarea } from "@/components/ui/textarea"
-import GeneratePodcast from "@/components/GeneratePodcast"
+import GenerateAudio from "@/components/GenerateAudio"
 import GenerateThumbnail from "@/components/GenerateThumbnail"
 import { Loader } from "lucide-react"
 import { Id } from "@/convex/_generated/dataModel"
@@ -131,7 +131,7 @@ const CreatePodcast = () => {
             />
           </div>
           <div className="flex flex-col pt-10">
-              <GeneratePodcast 
+              <GenerateAudio 
                 setAudioStorageId={setAudioStorageId}
                 setAudio={setAudioUrl}
                 voiceType={voiceType!}

@@ -51,7 +51,7 @@ export interface ProfilePodcastProps {
 }
 
 
-export interface GeneratePodcastProps {
+export interface GenerateAudioProps {
   setAudio: Dispatch<SetStateAction<string>>;
   audio: string;
   setAudioStorageId: Dispatch<SetStateAction<Id<"_storage"> | null>>;
@@ -62,7 +62,7 @@ export interface GeneratePodcastProps {
   setAudioDuration: Dispatch<SetStateAction<number>>;
 }
 
-export interface UseGeneratePodcastProps {
+export interface UseGenerateAudioProps {
   voiceType: string;
   setAudio: Dispatch<SetStateAction<string>>;
   setAudioStorageId: Dispatch<SetStateAction<Id<"_storage"> | null>>;
