@@ -110,7 +110,31 @@ html {
 }
 
 /* ======= clerk overrides ======== */
-.cl-socialButtonsIconButton {
+.cl-cardBox {
+  border: none !important;
+  border-width: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0;
+  width: auto !important;
+}
+.cl-navbar.cl-internal-1efiaa8 {
+  display: none;
+}
+.cl-internal-kgbfts {
+  background-color: #101114;
+  box-shadow: none;
+}
+.cl-pageScrollBox.cl-internal-1bx943x {
+  padding: 0;
+}
+.cl-navbarMobileMenuRow.cl-internal-kidljv {
+  display: none;
+}
+.cl-footer.cl-internal-sfd6or {
+  display: none;
+}
+
+/* .cl-socialButtonsIconButton {
   border: 2px solid #222429;
 }
 .cl-button {
@@ -144,7 +168,7 @@ html {
 }
 .cl-internal-16vtwdp {
   color: #FF4C4C;
-}
+} */
 @layer base {
   :root {
     --background: 0 0% 100%;

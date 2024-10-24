@@ -19,7 +19,7 @@ const LeftSidebar = () => {
 
   return (
     <aside
-      className={cn("left_sidebar h-[calc(100vh-5px)]", {
+      className={cn("left_sidebar h-[calc(100vh-1px)]", {
         "h-[calc(100vh-120px)]": audio?.audioUrl,
       })}
     >
@@ -58,16 +58,23 @@ const LeftSidebar = () => {
         <SignedIn>
           {user && (
             <Link
-              href={`/profile/${user.id}`}
-              key="my-profile"
+              href={`/user-profile`}
+              key="user-profile"
               className={clsx(
                 "flex gap-3 items-center py-4 max-lg:px-4 justify-center lg:justify-start",
                 {
-                  "bg-nav-focus border-r-4 border-primary-1": (pathname === `/profile/${user.id}` || pathname.startsWith(`/profile/${user.id}/`))
+                  "bg-nav-focus border-r-4 border-primary-1":
+                    pathname === `/user-profile` ||
+                    pathname.startsWith(`/user-profile`),
                 }
               )}
             >
-              <Image src='/icons/profile.svg' width={24} height={24} alt="My profile" />
+              <Image
+                src="/icons/profile.svg"
+                width={24}
+                height={24}
+                alt="my profile"
+              />
               <p className="hidden lg:block">My profile</p>
             </Link>
           )}
