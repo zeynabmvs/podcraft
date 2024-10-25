@@ -2,6 +2,7 @@ import { PodcastRowItemProps } from "@/types/index";
 import Image from "next/image";
 import { formatTime } from "@/lib/formatTime";
 import { useRouter } from "next/navigation";
+import { HiClock } from "react-icons/hi";
 
 const PodcastRowItem = ({
   imgUrl,
@@ -49,12 +50,7 @@ const PodcastRowItem = ({
             {views}
           </div>
           <div className="flex gap-3">
-            <Image
-              src="/icons/clock.svg"
-              width={24}
-              height={24}
-              alt="duration"
-            />
+            <HiClock size={24} />
             {formatTime(audioDuration)}
           </div>
           <Image src="/icons/dots.svg" width={15} height={2} alt="detail" />

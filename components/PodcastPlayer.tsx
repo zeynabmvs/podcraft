@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { formatTime } from "@/lib/formatTime";
 import { cn } from "@/lib/utils";
 import { useAudio } from "@/providers/AudioProvider";
-
+import { HiOutlineXMark, HiPauseCircle, HiPlayCircle } from "react-icons/hi2";
 import { Progress } from "@/components/ui/progress";
 
 const PodcastPlayer = () => {
@@ -15,7 +15,7 @@ const PodcastPlayer = () => {
   const [duration, setDuration] = useState(0);
   const [isMuted, setIsMuted] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
-  const { audio } = useAudio();
+  const { audio, setAudio } = useAudio();
 
   const togglePlayPause = () => {
     if (audioRef.current?.paused) {
@@ -83,6 +83,7 @@ const PodcastPlayer = () => {
       setIsPlaying(true);
     }
   }, [audio]);
+
   const handleLoadedMetadata = () => {
     if (audioRef.current) {
       setDuration(audioRef.current.duration);
@@ -91,6 +92,12 @@ const PodcastPlayer = () => {
 
   const handleAudioEnded = () => {
     setIsPlaying(false);
+  };
+
+  const closePodcastPlayer = () => {
+    audioRef.current?.pause();
+    setIsPlaying(false);
+    setAudio(undefined);
   };
 
   return (
@@ -141,13 +148,9 @@ const PodcastPlayer = () => {
             />
             <h2 className="text-12 font-bold text-white-4">-5</h2>
           </div>
-          <Image
-            src={isPlaying ? "/icons/Pause.svg" : "/icons/Play.svg"}
-            width={30}
-            height={30}
-            alt="play"
-            onClick={togglePlayPause}
-          />
+          {
+            isPlaying ? <HiPauseCircle size="2.5rem" onClick={togglePlayPause}/> : <HiPlayCircle  size="2.5rem" onClick={togglePlayPause}/>
+          }
           <div className="flex items-center gap-1.5">
             <h2 className="text-12 font-bold text-white-4">+5</h2>
             <Image
@@ -174,6 +177,8 @@ const PodcastPlayer = () => {
             />
           </div>
         </div>
+
+        <HiOutlineXMark onClick={closePodcastPlayer} size="1.5rem" />
       </section>
     </div>
   );

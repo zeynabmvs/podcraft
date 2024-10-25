@@ -7,7 +7,7 @@ import { useState } from "react";
 import { api } from "@/convex/_generated/api";
 import { useAudio } from '@/providers/AudioProvider';
 import { PodcastDetailPlayerProps } from "@/types";
-
+import { HiPlayCircle } from "react-icons/hi2";
 import LoaderSpinner from "./LoaderSpinner";
 import { Button } from "./ui/button";
 import { useToast } from "@/hooks/use-toast";
@@ -94,12 +94,7 @@ const PodcastDetailPlayer = ({
             onClick={handlePlay}
             className="text-16 w-full max-w-[250px] bg-primary-1 font-extrabold text-white-1"
           >
-            <Image
-              src="/icons/Play.svg"
-              width={20}
-              height={20}
-              alt="random play"
-            />{" "}
+            <HiPlayCircle size={18} />
             &nbsp; Play podcast
           </Button>
         </div>

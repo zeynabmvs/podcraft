@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import { useAudio } from "@/providers/AudioProvider";
 import { PodcastProps, ProfileCardProps } from "@/types";
-
+import { HiPlayCircle } from "react-icons/hi2";
 import LoaderSpinner from "./LoaderSpinner";
 import { Button } from "./ui/button";
 
@@ -80,12 +80,7 @@ const ProfileCard = ({
             onClick={playRandomPodcast}
             className="text-16 bg-primary-1 font-extrabold text-white-1"
           >
-            <Image
-              src="/icons/Play.svg"
-              width={20}
-              height={20}
-              alt="random play"
-            />{" "}
+            <HiPlayCircle size={18} />
             &nbsp; Play a random podcast
           </Button>
         )}

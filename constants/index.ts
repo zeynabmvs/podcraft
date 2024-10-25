@@ -1,4 +1,25 @@
+import { HiHome, HiMicrophone } from "react-icons/hi";
+import { HiMagnifyingGlass } from "react-icons/hi2";
+
 export const sidebarLinks = [
+  {
+    icon: HiHome,
+    route: "/",
+    label: "Home",
+  },
+  {
+    icon: HiMagnifyingGlass,
+    route: "/discover",
+    label: "Discover",
+  },
+  {
+    icon: HiMicrophone,
+    route: "/create-podcast",
+    label: "Create Podcast",
+  },
+];
+
+export const sidebarLinks1 = [
   {
     imgURL: "/icons/home.svg",
     route: "/",
@@ -105,44 +126,43 @@ export const podcastData = [
   //   imgUrl:
   //     "https://lovely-flamingo-139.convex.cloud/api/storage/221ee4bd-435f-42c3-8e98-4a001e0d806e",
   // },
-  
-    // {
-    //   audioDuration: 10,
-    //   author: "Jack",
-    //   authorId: "jd755p8f6w9mg1vbc5eezmdyp170wsqa",
-    //   authorImageUrl: "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ybUFCeTNKMG1YdHRBeXZWZ2dFb0FBTE9IRWoifQ",
-    //   imagePrompt: "Something about podcasts",
-    //   podcastDescription: "Voices of Tomorrow is an engaging podcast that explores the innovative ideas and inspiring stories of today's thought leaders, entrepreneurs, and change-makers. Each week, we dive deep into the minds of our guests, uncovering their journeys, challenges, and the lessons they've learned along the way. From technology and business to art and personal development, 'Voices of Tomorrow' aims to provide listeners with valuable insights and actionable takeaways that can help them navigate their own paths to success. Join us as we embark on a journey of discovery and growth, featuring experts from various fields sharing their unique perspectives. Whether you're looking for motivation to kickstart your day, practical advice to implement in your career, or simply a fascinating story to enjoy, this podcast has something for everyone. Tune in, and let the voices of tomorrow inspire you to reach new heights!",
-    //   podcastTitle: "Voices of Tomorrow",
-    //   user: "jd755p8f6w9mg1vbc5eezmdyp170wsqa",
-    //   views: 150,
-    //   voicePrompt: "Join us as we embark on a journey of discovery and growth, featuring experts from various fields sharing their unique perspectives. Whether you're looking for motivation to kickstart your day, practical advice to implement in your career, or simply a fascinating story to enjoy, this podcast has something for everyone. Tune in, and let the voices of tomorrow inspire you to reach new heights!",
-    //   voiceType: "nova",
-    // },  {
-    //   audioDuration: 10,
-    //   author: "Jack",
-    //   authorId: "jd755p8f6w9mg1vbc5eezmdyp170wsqa",
-    //   authorImageUrl: "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ybUFCeTNKMG1YdHRBeXZWZ2dFb0FBTE9IRWoifQ",
-    //   imagePrompt: "Something about podcasts",
-    //   podcastDescription: "The Futur is an engaging podcast that explores the innovative ideas and inspiring stories of today's thought leaders, entrepreneurs, and change-makers. Each week, we dive deep into the minds of our guests, uncovering their journeys, challenges, and the lessons they've learned along the way. From technology and business to art and personal development, 'Voices of Tomorrow' aims to provide listeners with valuable insights and actionable takeaways that can help them navigate their own paths to success. Join us as we embark on a journey of discovery and growth, featuring experts from various fields sharing their unique perspectives. Whether you're looking for motivation to kickstart your day, practical advice to implement in your career, or simply a fascinating story to enjoy, this podcast has something for everyone. Tune in, and let the voices of tomorrow inspire you to reach new heights!",
-    //   podcastTitle: "The Futur",
-    //   user: "jd755p8f6w9mg1vbc5eezmdyp170wsqa",
-    //   views: 20,
-    //   voicePrompt: "Join us as we embark on a journey of discovery and growth, featuring experts from various fields sharing their unique perspectives. Whether you're looking for motivation to kickstart your day, practical advice to implement in your career, or simply a fascinating story to enjoy, this podcast has something for everyone. Tune in, and let the voices of tomorrow inspire you to reach new heights!",
-    //   voiceType: "echo",
-    // },
-    // {
-    //   audioDuration: 10,
-    //   author: "Jack",
-    //   authorId: "jd755p8f6w9mg1vbc5eezmdyp170wsqa",
-    //   authorImageUrl: "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ybUFCeTNKMG1YdHRBeXZWZ2dFb0FBTE9IRWoifQ",
-    //   imagePrompt: "Something about podcasts",
-    //   podcastDescription: "his is how the news should sound",
-    //   podcastTitle: "Waveform",
-    //   user: "jd755p8f6w9mg1vbc5eezmdyp170wsqa",
-    //   views: 20,
-    //   voicePrompt: "Join us as we embark on a journey of discovery and growth, featuring experts from various fields sharing their unique perspectives. Whether you're looking for motivation to kickstart your day, practical advice to implement in your career, or simply a fascinating story to enjoy, this podcast has something for everyone. Tune in, and let the voices of tomorrow inspire you to reach new heights!",
-    //   voiceType: "alloy",
-    // },
-  
+
+  // {
+  //   audioDuration: 10,
+  //   author: "Jack",
+  //   authorId: "jd755p8f6w9mg1vbc5eezmdyp170wsqa",
+  //   authorImageUrl: "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ybUFCeTNKMG1YdHRBeXZWZ2dFb0FBTE9IRWoifQ",
+  //   imagePrompt: "Something about podcasts",
+  //   podcastDescription: "Voices of Tomorrow is an engaging podcast that explores the innovative ideas and inspiring stories of today's thought leaders, entrepreneurs, and change-makers. Each week, we dive deep into the minds of our guests, uncovering their journeys, challenges, and the lessons they've learned along the way. From technology and business to art and personal development, 'Voices of Tomorrow' aims to provide listeners with valuable insights and actionable takeaways that can help them navigate their own paths to success. Join us as we embark on a journey of discovery and growth, featuring experts from various fields sharing their unique perspectives. Whether you're looking for motivation to kickstart your day, practical advice to implement in your career, or simply a fascinating story to enjoy, this podcast has something for everyone. Tune in, and let the voices of tomorrow inspire you to reach new heights!",
+  //   podcastTitle: "Voices of Tomorrow",
+  //   user: "jd755p8f6w9mg1vbc5eezmdyp170wsqa",
+  //   views: 150,
+  //   voicePrompt: "Join us as we embark on a journey of discovery and growth, featuring experts from various fields sharing their unique perspectives. Whether you're looking for motivation to kickstart your day, practical advice to implement in your career, or simply a fascinating story to enjoy, this podcast has something for everyone. Tune in, and let the voices of tomorrow inspire you to reach new heights!",
+  //   voiceType: "nova",
+  // },  {
+  //   audioDuration: 10,
+  //   author: "Jack",
+  //   authorId: "jd755p8f6w9mg1vbc5eezmdyp170wsqa",
+  //   authorImageUrl: "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ybUFCeTNKMG1YdHRBeXZWZ2dFb0FBTE9IRWoifQ",
+  //   imagePrompt: "Something about podcasts",
+  //   podcastDescription: "The Futur is an engaging podcast that explores the innovative ideas and inspiring stories of today's thought leaders, entrepreneurs, and change-makers. Each week, we dive deep into the minds of our guests, uncovering their journeys, challenges, and the lessons they've learned along the way. From technology and business to art and personal development, 'Voices of Tomorrow' aims to provide listeners with valuable insights and actionable takeaways that can help them navigate their own paths to success. Join us as we embark on a journey of discovery and growth, featuring experts from various fields sharing their unique perspectives. Whether you're looking for motivation to kickstart your day, practical advice to implement in your career, or simply a fascinating story to enjoy, this podcast has something for everyone. Tune in, and let the voices of tomorrow inspire you to reach new heights!",
+  //   podcastTitle: "The Futur",
+  //   user: "jd755p8f6w9mg1vbc5eezmdyp170wsqa",
+  //   views: 20,
+  //   voicePrompt: "Join us as we embark on a journey of discovery and growth, featuring experts from various fields sharing their unique perspectives. Whether you're looking for motivation to kickstart your day, practical advice to implement in your career, or simply a fascinating story to enjoy, this podcast has something for everyone. Tune in, and let the voices of tomorrow inspire you to reach new heights!",
+  //   voiceType: "echo",
+  // },
+  // {
+  //   audioDuration: 10,
+  //   author: "Jack",
+  //   authorId: "jd755p8f6w9mg1vbc5eezmdyp170wsqa",
+  //   authorImageUrl: "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ybUFCeTNKMG1YdHRBeXZWZ2dFb0FBTE9IRWoifQ",
+  //   imagePrompt: "Something about podcasts",
+  //   podcastDescription: "his is how the news should sound",
+  //   podcastTitle: "Waveform",
+  //   user: "jd755p8f6w9mg1vbc5eezmdyp170wsqa",
+  //   views: 20,
+  //   voicePrompt: "Join us as we embark on a journey of discovery and growth, featuring experts from various fields sharing their unique perspectives. Whether you're looking for motivation to kickstart your day, practical advice to implement in your career, or simply a fascinating story to enjoy, this podcast has something for everyone. Tune in, and let the voices of tomorrow inspire you to reach new heights!",
+  //   voiceType: "alloy",
+  // },
 ];

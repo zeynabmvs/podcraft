@@ -13,8 +13,12 @@ import Link from "next/link";
 import { SignedIn, SignedOut, useClerk, useUser } from "@clerk/nextjs";
 import { clsx } from "clsx";
 import { Button } from "@/components/ui/button";
-
+import { HiUser } from "react-icons/hi";
 import { usePathname, useRouter } from "next/navigation";
+import { HiBars3BottomRight } from "react-icons/hi2";
+import { IoIosLogOut } from "react-icons/io";
+import { GoSignIn } from "react-icons/go";
+import { SpaceIcon } from "lucide-react";
 
 const MobileNav = () => {
   const pathname = usePathname();
@@ -26,13 +30,7 @@ const MobileNav = () => {
     <section>
       <Sheet>
         <SheetTrigger>
-          <Image
-            src="/icons/hamburger.svg"
-            width={30}
-            height={30}
-            alt="menu"
-            className="cursor-pointer"
-          />
+          <HiBars3BottomRight size={32} />
         </SheetTrigger>
         <SheetContent side="left" className="border-none bg-black-1">
           <Link
@@ -47,7 +45,7 @@ const MobileNav = () => {
           <div className="flex h-[calc(100vh-72px)] flex-col justify-between overflow-y-auto">
             <SheetClose>
               <nav className="flex h-full flex-col gap-6 text-white-1">
-                {sidebarLinks.map(({ route, label, imgURL }) => {
+                {sidebarLinks.map(({ route, label, icon: Icon }) => {
                   const isActive =
                     pathname === route || pathname.startsWith(`${route}/`);
 
@@ -63,12 +61,7 @@ const MobileNav = () => {
                           }
                         )}
                       >
-                        <Image
-                          src={imgURL}
-                          alt={label}
-                          width={24}
-                          height={24}
-                        />
+                        <Icon size={24} />
                         <p>{label}</p>
                       </Link>
                     </SheetClose>
@@ -89,12 +82,8 @@ const MobileNav = () => {
                           }
                         )}
                       >
-                        <Image
-                          src="/icons/profile.svg"
-                          width={24}
-                          height={24}
-                          alt="my profile"
-                        />
+                        <HiUser size={24} />
+
                         <p>My profile</p>
                       </Link>
                     </SheetClose>
@@ -104,22 +93,26 @@ const MobileNav = () => {
 
               <div className="mr-8">
                 <SignedOut>
-                  <div className="flex-center w-full pb-14">
+                  <div className="flex-center lg:w-[80%] pb-14 mx-auto">
                     <Button
                       asChild
                       className="text-16 w-full bg-primary-1 font-extrabold"
                     >
-                      <Link href="/sign-in">Sign in</Link>
+                      <Link href="/sign-in" className="flex gap-1">
+                        <IoIosLogOut size={20} />
+                        <span>Sign in</span>
+                      </Link>
                     </Button>
                   </div>
                 </SignedOut>
                 <SignedIn>
-                  <div className="flex-center w-full pb-14 max-lg:px-4 lg:pr-8">
+                  <div className="flex-center lg:w-[80%] pb-14 mx-auto">
                     <Button
-                      className="text-16 w-full bg-primary-1 font-extrabold"
+                      className="text-16 w-full bg-primary-1 font-extrabold flex gap-1"
                       onClick={() => signOut(() => router.push("/"))}
                     >
-                      Log Out
+                      <GoSignIn size={20} />
+                      <span>Log Out</span>
                     </Button>
                   </div>
                 </SignedIn>
