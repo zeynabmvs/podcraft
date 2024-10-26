@@ -27,7 +27,7 @@ const PodcastRowItem = ({
     <div className="cursor-pointer border-b border-b-black-4 last-of-type:border-none" onClick={handleViews} >
       <div className="flex items-center justify-between py-5">
         <div className="flex gap-3 items-center w-full">
-          {index + 1}
+          {/* {index + 1} */}
           <Image
             src={imgUrl}
             width={50}

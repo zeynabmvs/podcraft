@@ -12,9 +12,24 @@ export function CardSkeleton() {
   );
 }
 
+export const RowSkeleton = () => {
+  return (
+    <div className="podcast_grid">
+      <CardSkeleton />
+      <CardSkeleton />
+      <CardSkeleton />
+      <CardSkeleton />
+    </div>
+  );
+};
+
 export const GridSkeleton = () => {
   return (
     <div className="podcast_grid">
+      <CardSkeleton />
+      <CardSkeleton />
+      <CardSkeleton />
+      <CardSkeleton />
       <CardSkeleton />
       <CardSkeleton />
       <CardSkeleton />
@@ -27,8 +42,8 @@ export const DetailPlayerSkeleton = () => {
   return (
     <div className="mt-6 flex w-full justify-between max-md:justify-center">
       <div className="flex flex-col gap-8 max-md:items-center md:flex-row">
-      {/* TODO: width is not accurate */}
-        <Skeleton className="size-[250px] rounded-lg" />    
+        {/* TODO: width is not accurate */}
+        <Skeleton className="size-[250px] rounded-lg" />
         <div className="flex w-full flex-col gap-5 max-md:items-center md:gap-9">
           <div className="flex flex-col gap-2 max-md:items-center">
             <Skeleton className=" w-[250px] h-8" />
@@ -40,5 +55,41 @@ export const DetailPlayerSkeleton = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+const PodcastRowItemSkeleton = () => {
+  return (
+    <div className="cursor-pointer border-b border-b-black-4 last-of-type:border-none">
+      <div className="flex items-center justify-between py-5">
+        {/* Left Section */}
+        <div className="flex gap-3 items-center w-full">
+          <Skeleton className="h-[50px] w-[54px] rounded-md" />{" "}
+          {/* Placeholder for image */}
+          <Skeleton className="h-6 w-48" /> {/* Placeholder for title */}
+        </div>
+
+        {/* Right Section */}
+        <div className="w-full flex gap-12 justify-end">
+          {/* Views */}
+          <div className="flex gap-3">
+            <Skeleton className="h-6 w-6" />{" "}
+            {/* Placeholder for headphone icon */}
+            <Skeleton className="h-6 w-12" /> {/* Placeholder for views */}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const LatestPodcastsSkeleton = () => {
+  return (
+    <>
+      <PodcastRowItemSkeleton />
+      <PodcastRowItemSkeleton />
+      <PodcastRowItemSkeleton />
+      <PodcastRowItemSkeleton />
+    </>
   );
 };
