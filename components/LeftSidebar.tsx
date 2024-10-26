@@ -28,6 +28,7 @@ const LeftSidebar = () => {
     >
       <nav>
         <Link
+        key="logo"
           href="/"
           className="flex cursor-pointer items-center gap-1 pb-10 max-lg:justify-center lg:pl-8"
         >
