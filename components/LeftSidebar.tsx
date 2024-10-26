@@ -28,7 +28,7 @@ const LeftSidebar = () => {
     >
       <nav>
         <Link
-        key="logo"
+          key="logo"
           href="/"
           className="flex cursor-pointer items-center gap-1 pb-10 max-lg:justify-center lg:pl-8"
         >
@@ -43,21 +43,19 @@ const LeftSidebar = () => {
             pathname === route || pathname.startsWith(`${route}/`);
 
           return (
-            <>
-              <Link
-                href={route}
-                key={label}
-                className={clsx(
-                  "flex gap-3 items-center py-4 max-lg:px-4 justify-center lg:justify-start lg:pl-8",
-                  {
-                    "bg-nav-focus border-r-4 border-primary-1": isActive,
-                  }
-                )}
-              >
-                <Icon size={24} />
-                <p className="hidden lg:block">{label}</p>
-              </Link>
-            </>
+            <Link
+              href={route}
+              key={label}
+              className={clsx(
+                "flex gap-3 items-center py-4 max-lg:px-4 justify-center lg:justify-start lg:pl-8",
+                {
+                  "bg-nav-focus border-r-4 border-primary-1": isActive,
+                }
+              )}
+            >
+              <Icon size={24} />
+              <p className="hidden lg:block">{label}</p>
+            </Link>
           );
         })}
 
