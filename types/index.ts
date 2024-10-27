@@ -50,7 +50,6 @@ export interface ProfilePodcastProps {
   listeners: number;
 }
 
-
 export interface GenerateAudioProps {
   setAudio: Dispatch<SetStateAction<string>>;
   audio: string;
@@ -58,7 +57,7 @@ export interface GenerateAudioProps {
   voicePrompt: string;
   voiceType: string;
   setVoicePrompt: Dispatch<SetStateAction<string>>;
-  setVoiceType: Dispatch<SetStateAction<string| null>>;
+  setVoiceType: Dispatch<SetStateAction<string | null>>;
   setAudioDuration: Dispatch<SetStateAction<number>>;
 }
 
@@ -137,13 +136,14 @@ export type UseDotButtonType = {
   onDotButtonClick: (index: number) => void;
 };
 
-
 export type PodcastRowItemProps = {
   imgUrl: string;
   title: string;
   description: string;
   podcastId: Id<"podcasts">;
-  index: number,
-  views: number,
+  index: number;
+  views: number;
   audioDuration: number;
-}
+  audioUrl: string;
+  author: string;
+};

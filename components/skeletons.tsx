@@ -71,12 +71,7 @@ const PodcastRowItemSkeleton = () => {
 
         {/* Right Section */}
         <div className="w-full flex gap-12 justify-end">
-          {/* Views */}
-          <div className="flex gap-3">
-            <Skeleton className="h-6 w-6" />{" "}
-            {/* Placeholder for headphone icon */}
-            <Skeleton className="h-6 w-12" /> {/* Placeholder for views */}
-          </div>
+          <Skeleton className="h-6 w-6 rounded-full" /> {/* Placeholder for play */}
         </div>
       </div>
     </div>

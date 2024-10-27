@@ -53,6 +53,8 @@ export default function Home() {
                 imageUrl,
                 views,
                 audioDuration,
+                audioUrl,
+                author
               },
               index
             ) => (
@@ -65,6 +67,8 @@ export default function Home() {
                 views={views}
                 audioDuration={audioDuration}
                 index={index}
+                audioUrl={audioUrl as string}
+                author={author}
               />
             )
           )}
