@@ -7,6 +7,7 @@ import { PodcastProps, ProfileCardProps } from "@/types";
 import { HiPlayCircle } from "react-icons/hi2";
 import LoaderSpinner from "./LoaderSpinner";
 import { Button } from "./ui/button";
+import { PiHeadphonesFill } from "react-icons/pi";
 
 const ProfileCard = ({
   podcastData,
@@ -64,12 +65,7 @@ const ProfileCard = ({
           </h1>
         </div>
         <figure className="flex gap-3 py-6">
-          <Image
-            src="/icons/headphone.svg"
-            width={24}
-            height={24}
-            alt="headphones"
-          />
+          <PiHeadphonesFill size={24} />
           <h2 className="text-16 font-semibold text-white-1">
             {podcastData?.listeners} &nbsp;
             <span className="font-normal text-white-2">monthly listeners</span>

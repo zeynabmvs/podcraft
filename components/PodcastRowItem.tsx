@@ -4,7 +4,10 @@ import { formatTime } from "@/lib/formatTime";
 import { useRouter } from "next/navigation";
 import { HiClock, HiPlay } from "react-icons/hi";
 import { useAudio } from "@/providers/AudioProvider";
-import { HiMiniPlay } from "react-icons/hi2";
+import { PiHeadphonesFill } from "react-icons/pi";
+import { useMutation } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { updatePodcastViews } from "@/convex/podcasts";
 
 const PodcastRowItem = ({
   imgUrl,
@@ -18,14 +21,21 @@ const PodcastRowItem = ({
   author,
 }: PodcastRowItemProps) => {
   const router = useRouter();
-  const { audio, setAudio } = useAudio();
+  const { setAudio } = useAudio();
+  const updateView = useMutation(api.podcasts.updatePodcastViews);
 
-  const handleViews = () => {
-    // increase views
-
+  const handleViews = async () => {
     router.push(`/podcasts/${podcastId}`, {
       scroll: true,
     });
+    // increase views
+    try {
+      await updateView({
+        podcastId: podcastId,
+      });
+    } catch (error) {
+      console.log("could not update views!");
+    }
   };
 
   return (
@@ -45,12 +55,7 @@ const PodcastRowItem = ({
 
             <div className="flex gap-3 text-sm text-gray-400">
               <div className="flex gap-1 items-center">
-                <Image
-                  src="/icons/headphone.svg"
-                  width={14}
-                  height={14}
-                  alt="views"
-                />
+                <PiHeadphonesFill size={14} />
                 {views}
               </div>
               <div className="flex gap-1 items-center">

@@ -5,12 +5,13 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { api } from "@/convex/_generated/api";
-import { useAudio } from '@/providers/AudioProvider';
+import { useAudio } from "@/providers/AudioProvider";
 import { PodcastDetailPlayerProps } from "@/types";
 import { HiPlayCircle } from "react-icons/hi2";
 import LoaderSpinner from "./LoaderSpinner";
 import { Button } from "./ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 
 const PodcastDetailPlayer = ({
   audioUrl,
@@ -101,12 +102,8 @@ const PodcastDetailPlayer = ({
       </div>
       {isOwner && (
         <div className="relative mt-2">
-          <Image
-            src="/icons/three-dots.svg"
-            width={20}
-            height={30}
-            alt="Three dots icon"
-            className="cursor-pointer"
+          <PiDotsThreeOutlineVerticalFill
+            size={20}
             onClick={() => setIsDeleting((prev) => !prev)}
           />
           {isDeleting && (
