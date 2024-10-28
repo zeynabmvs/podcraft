@@ -1,10 +1,10 @@
 "use client";
 import { useUser } from "@clerk/nextjs";
-import LoaderSpinner from "@/components/LoaderSpinner";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import PodcastRowItem from "@/components/PodcastRowItem";
-
+import { MultiplePodcastRowsSkeleton } from "@/components/skeletons";
+import { FaPlay } from "react-icons/fa";
 const page = () => {
   const clerkData = useUser();
 
@@ -16,41 +16,47 @@ const page = () => {
     podcastIds: user?.playlist || [],
   });
 
-  if (!user || !user.playlist || !playlistPodcasts) return <LoaderSpinner />;
+  const playAll = () => {};
 
   return (
     <section className="pt-9">
-      <h1 className="text-20 font-bold text-white-1">My Playlist</h1>
+      <header>
+        <h1 className="text-20 font-bold text-white-1">My Playlist</h1>
+      </header>
 
       {
         <div>
-          {playlistPodcasts?.map(
-            (
-              {
-                _id,
-                podcastTitle,
-                podcastDescription,
-                imageUrl,
-                views,
-                audioDuration,
-                audioUrl,
-                author,
-              },
-              index
-            ) => (
-              <PodcastRowItem
-                key={_id}
-                imgUrl={imageUrl as string}
-                title={podcastTitle}
-                description={podcastDescription}
-                podcastId={_id}
-                views={views}
-                audioDuration={audioDuration}
-                index={index}
-                audioUrl={audioUrl as string}
-                author={author}
-              />
+          {user && user.playlist && playlistPodcasts ? (
+            playlistPodcasts?.map(
+              (
+                {
+                  _id,
+                  podcastTitle,
+                  podcastDescription,
+                  imageUrl,
+                  views,
+                  audioDuration,
+                  audioUrl,
+                  author,
+                },
+                index
+              ) => (
+                <PodcastRowItem
+                  key={_id}
+                  imgUrl={imageUrl as string}
+                  title={podcastTitle}
+                  description={podcastDescription}
+                  podcastId={_id}
+                  views={views}
+                  audioDuration={audioDuration}
+                  index={index}
+                  audioUrl={audioUrl as string}
+                  author={author}
+                />
+              )
             )
+          ) : (
+            <MultiplePodcastRowsSkeleton count={5} />
           )}
         </div>
       }

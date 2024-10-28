@@ -71,20 +71,19 @@ const PodcastRowItemSkeleton = () => {
 
         {/* Right Section */}
         <div className="w-full flex gap-12 justify-end">
-          <Skeleton className="h-6 w-6 rounded-full" /> {/* Placeholder for play */}
+          <Skeleton className="h-6 w-6 rounded-full" />{" "}
+          {/* Placeholder for play */}
         </div>
       </div>
     </div>
   );
 };
 
-export const LatestPodcastsSkeleton = () => {
-  return (
-    <>
-      <PodcastRowItemSkeleton />
-      <PodcastRowItemSkeleton />
-      <PodcastRowItemSkeleton />
-      <PodcastRowItemSkeleton />
-    </>
-  );
+export const MultiplePodcastRowsSkeleton = ({ count }: { count: number }) => {
+  const skeletons = [];
+
+  for (let i = 0; i < count; i++) {
+    skeletons.push(<PodcastRowItemSkeleton key={i} />);
+  }
+  return <>{skeletons}</>;
 };
