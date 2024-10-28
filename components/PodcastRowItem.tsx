@@ -45,7 +45,7 @@ const PodcastRowItem = ({
           <Image
             src={imgUrl}
             width={50}
-            height={54}
+            height={50}
             alt={title}
             className="rounded-md"
           />

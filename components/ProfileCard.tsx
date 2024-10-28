@@ -53,7 +53,7 @@ const ProfileCard = ({
             <Image
               src="/icons/verified.svg"
               width={15}
-              height={15}
+              height={21}
               alt="verified"
             />
             <h2 className="text-14 font-medium text-white-2">
