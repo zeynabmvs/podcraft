@@ -28,5 +28,6 @@ export default defineSchema({
     imageUrl: v.string(),
     clerkId: v.string(),
     name: v.string(),
+    playlist: v.optional(v.array(v.id("podcasts"))),
   }),
 });

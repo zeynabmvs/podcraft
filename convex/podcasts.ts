@@ -100,6 +100,23 @@ export const getPodcastById = query({
   },
 });
 
+// this query will get a list of podcasts by the array of podcastIds.
+export const getPodcastsByIds = query({
+  args: {
+    podcastIds: v.array(v.id("podcasts")),
+  },
+  handler: async (ctx, args) => {
+    if (args.podcastIds.length > 0) {
+      const podcasts = await Promise.all(
+        args.podcastIds.map((podcastId) => ctx.db.get(podcastId))
+      );
+      return podcasts;
+    } else {
+      return [];
+    }
+  },
+});
+
 // this query will get the podcasts based on the views of the podcast , which we are showing in the Trending Podcasts section.
 export const getTrendingPodcasts = query({
   handler: async (ctx) => {

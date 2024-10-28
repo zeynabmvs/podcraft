@@ -3,6 +3,9 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
+import { RiPlayListAddFill } from "react-icons/ri";
+import { useUser } from "@clerk/nextjs";
+import { useToast } from "@/hooks/use-toast";
 
 const PodcastCard = ({
   imgUrl,
@@ -12,6 +15,9 @@ const PodcastCard = ({
 }: PodcastCardProps) => {
   const router = useRouter();
   const updateView = useMutation(api.podcasts.updatePodcastViews);
+  const updatePlaylist = useMutation(api.users.updateUserPlaylist);
+  const clerkData = useUser();
+  const { toast } = useToast();
 
   const handleViews = async () => {
     router.push(`/podcasts/${podcastId}`, {
@@ -28,9 +34,29 @@ const PodcastCard = ({
     }
   };
 
+  const addToPlaylist = async () => {
+    console.log(clerkData);
+
+    if (clerkData.isSignedIn) {
+      try {
+        const result = await updatePlaylist({
+          clerkId: clerkData?.user?.id,
+          podcastId: podcastId,
+        });
+        toast({ title: result.message });
+      } catch (error) {
+        console.log("could not update playlist!");
+      }
+    } else {
+      toast({
+        title: "First sign in",
+      });
+    }
+  };
+
   return (
-    <div className="cursor-pointer" onClick={handleViews}>
-      <figure className="flex flex-col gap-2">
+    <div className="cursor-pointer">
+      <figure className="flex flex-col gap-2" onClick={handleViews}>
         <Image
           src={imgUrl}
           width={174}
@@ -45,6 +71,7 @@ const PodcastCard = ({
           </h2>
         </div>
       </figure>
+      <RiPlayListAddFill onClick={addToPlaylist} />
     </div>
   );
 };

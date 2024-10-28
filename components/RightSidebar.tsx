@@ -9,7 +9,6 @@ import Carousel from "./Carousel";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useRouter } from "next/navigation";
-import { useAudio } from "@/providers/AudioProvider";
 import { cn } from "@/lib/utils";
 import { HiChevronRight } from "react-icons/hi2";
 
@@ -17,8 +16,6 @@ const RightSidebar = () => {
   const { user } = useUser();
   const topPodcasters = useQuery(api.users.getTopUserByPodcastCount);
   const router = useRouter();
-
-  const { audio } = useAudio();
 
   return (
     <section
@@ -38,7 +35,7 @@ const RightSidebar = () => {
         </Link>
       </SignedIn>
       <section className="flex flex-col gap-2">
-        <Header headerTitle="Fans Like You" />
+        <Header headerTitle="Fans also like" />
         <Carousel fansLikeDetail={topPodcasters!} />
       </section>
       <section className="flex flex-col gap-8 pt-12">

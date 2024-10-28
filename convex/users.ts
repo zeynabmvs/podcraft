@@ -1,6 +1,6 @@
 import { ConvexError, v } from "convex/values";
 
-import { internalMutation, query } from "./_generated/server";
+import { internalMutation, query, mutation } from "./_generated/server";
 
 export const getUserById = query({
   args: { clerkId: v.string() },
@@ -31,7 +31,7 @@ export const getTopUserByPodcastCount = query({
           .filter((q) => q.eq(q.field("user"), u._id))
           .collect();
 
-          const sortedPodcasts = podcasts.sort((a, b) => b.views - a.views);
+        const sortedPodcasts = podcasts.sort((a, b) => b.views - a.views);
 
         return {
           ...u,
@@ -61,6 +61,7 @@ export const createUser = internalMutation({
       email: args.email,
       imageUrl: args.imageUrl,
       name: args.name,
+      playlist: [],
     });
   },
 });
@@ -114,5 +115,38 @@ export const deleteUser = internalMutation({
     }
 
     await ctx.db.delete(user._id);
+  },
+});
+
+export const updateUserPlaylist = mutation({
+  args: {
+    clerkId: v.string(),
+    podcastId: v.id("podcasts"),
+  },
+  async handler(ctx, args) {
+    const user = await ctx.db
+      .query("users")
+      .filter((q) => q.eq(q.field("clerkId"), args.clerkId))
+      .unique();
+
+    if (!user) {
+      throw new ConvexError("User not found");
+    }
+
+    const playlist = user?.playlist || [];
+
+    // Add the new podcast ID to the playlist, avoiding duplicates
+    if (!playlist.includes(args.podcastId)) {
+      playlist.push(args.podcastId);
+
+      // Update the user's playlist field
+      await ctx.db.patch(user._id, {
+        playlist,
+      });
+
+      return {'message': 'Added to your playlist'}
+    } else {
+      return {'message': 'Already in the playList'}
+    }
   },
 });

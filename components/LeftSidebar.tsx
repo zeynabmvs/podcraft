@@ -34,7 +34,7 @@ const LeftSidebar = () => {
         >
           <Image src="/logo.png" width={40} height={40} alt="logo" />
           <h1 className="text-24 font-extrabold text-white max-lg:hidden">
-            Podcraft
+            Podcraft  
           </h1>
         </Link>
 
