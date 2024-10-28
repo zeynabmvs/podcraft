@@ -3,9 +3,6 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { RiPlayListAddFill } from "react-icons/ri";
-import { useUser } from "@clerk/nextjs";
-import { useToast } from "@/hooks/use-toast";
 
 const PodcastCard = ({
   imgUrl,
@@ -15,9 +12,6 @@ const PodcastCard = ({
 }: PodcastCardProps) => {
   const router = useRouter();
   const updateView = useMutation(api.podcasts.updatePodcastViews);
-  const updatePlaylist = useMutation(api.users.updateUserPlaylist);
-  const clerkData = useUser();
-  const { toast } = useToast();
 
   const handleViews = async () => {
     router.push(`/podcasts/${podcastId}`, {
@@ -31,26 +25,6 @@ const PodcastCard = ({
       });
     } catch (error) {
       console.log("could not update views!");
-    }
-  };
-
-  const addToPlaylist = async () => {
-    console.log(clerkData);
-
-    if (clerkData.isSignedIn) {
-      try {
-        const result = await updatePlaylist({
-          clerkId: clerkData?.user?.id,
-          podcastId: podcastId,
-        });
-        toast({ title: result.message });
-      } catch (error) {
-        console.log("could not update playlist!");
-      }
-    } else {
-      toast({
-        title: "First sign in",
-      });
     }
   };
 
@@ -71,7 +45,6 @@ const PodcastCard = ({
           </h2>
         </div>
       </figure>
-      <RiPlayListAddFill onClick={addToPlaylist} />
     </div>
   );
 };

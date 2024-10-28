@@ -15,7 +15,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <div>
+    <div className="pt-9">
       <h2>There was an error fetching data!</h2>
     </div>
   );

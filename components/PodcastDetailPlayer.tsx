@@ -3,7 +3,6 @@ import { useMutation } from "convex/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-
 import { api } from "@/convex/_generated/api";
 import { useAudio } from "@/providers/AudioProvider";
 import { PodcastDetailPlayerProps } from "@/types";
@@ -12,6 +11,8 @@ import LoaderSpinner from "./LoaderSpinner";
 import { Button } from "./ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
+import { RiPlayListAddFill } from "react-icons/ri";
+import { usePlaylist } from "@/hooks/use-playlist";
 
 const PodcastDetailPlayer = ({
   audioUrl,
@@ -30,6 +31,7 @@ const PodcastDetailPlayer = ({
   const { toast } = useToast();
   const [isDeleting, setIsDeleting] = useState(false);
   const deletePodcast = useMutation(api.podcasts.deletePodcast);
+  const { addToPlaylist } = usePlaylist();
 
   const handleDelete = async () => {
     try {
@@ -89,6 +91,17 @@ const PodcastDetailPlayer = ({
               />
               <h2 className="text-16 font-normal text-white-3">{author}</h2>
             </figure>
+
+            <div className="mt-4 flex gap-1">
+              {/* Add to playlist */}
+              <RiPlayListAddFill
+                size={24}
+                onClick={() => addToPlaylist(podcastId)}
+              />
+
+              {/* TODO:share button */}
+              {/*  TODO: download button */}
+            </div>
           </article>
 
           <Button
