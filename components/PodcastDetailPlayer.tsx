@@ -2,7 +2,7 @@
 import { useMutation } from "convex/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { api } from "@/convex/_generated/api";
 import { useAudio } from "@/providers/AudioProvider";
 import { PodcastDetailPlayerProps } from "@/types";
@@ -13,6 +13,7 @@ import { useToast } from "@/hooks/use-toast";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 import { RiPlayListAddFill } from "react-icons/ri";
 import { usePlaylist } from "@/hooks/use-playlist";
+import { IoMdDownload } from "react-icons/io";
 
 const PodcastDetailPlayer = ({
   audioUrl,
@@ -92,15 +93,22 @@ const PodcastDetailPlayer = ({
               <h2 className="text-16 font-normal text-white-3">{author}</h2>
             </figure>
 
-            <div className="mt-4 flex gap-1">
+            <div className="mt-4 flex gap-2">
               {/* Add to playlist */}
               <RiPlayListAddFill
+                className="cursor-pointer"
                 size={24}
                 onClick={() => addToPlaylist(podcastId)}
               />
-
-              {/* TODO:share button */}
-              {/*  TODO: download button */}
+              <a
+                href={audioUrl}
+                download={`${podcastTitle}.mp3`}
+                target="_blank"
+              >
+                <button>
+                  <IoMdDownload size={24} />
+                </button>
+              </a>
             </div>
           </article>
 
