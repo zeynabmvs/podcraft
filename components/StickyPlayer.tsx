@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { useAudio } from "@/providers/AudioProvider";
 import { HiOutlineXMark, HiPauseCircle, HiPlayCircle } from "react-icons/hi2";
 import { Progress } from "@/components/ui/progress";
+import { FaBackward, FaForward } from "react-icons/fa";
 
 const SKIP_TIME = 5;
 
@@ -111,13 +112,7 @@ const PodcastPlayer = () => {
         hidden: !audio?.audioUrl || audio?.audioUrl === "",
       })}
     >
-      {/* change the color for indicator inside the Progress component in ui folder */}
-      <Progress
-        value={(currentTime / duration) * 100}
-        className="w-full"
-        max={duration || 100}
-      />
-      <section className="glassmorphism-black flex h-[112px] w-full items-center justify-between px-4 max-md:justify-center max-md:gap-5 md:px-12">
+      <section className="glassmorphism-black flex h-[85px] w-full items-center justify-between px-4 max-md:justify-center max-md:gap-5 md:px-12">
         <audio
           ref={audioRef}
           src={audio?.audioUrl}
@@ -144,13 +139,7 @@ const PodcastPlayer = () => {
         </div>
         <div className="flex-center cursor-pointer gap-3 md:gap-6">
           <div className="flex items-center gap-1.5">
-            <Image
-              src={"/icons/reverse.svg"}
-              width={24}
-              height={24}
-              alt="rewind"
-              onClick={() => skipTime(-SKIP_TIME)}
-            />
+            <FaBackward size={20} onClick={() => skipTime(-SKIP_TIME)} />
             <h2 className="text-12 font-bold text-white-4">-5</h2>
           </div>
           {isPlaying ? (
@@ -160,29 +149,32 @@ const PodcastPlayer = () => {
           )}
           <div className="flex items-center gap-1.5">
             <h2 className="text-12 font-bold text-white-4">+5</h2>
-            <Image
-              src={"/icons/forward.svg"}
-              width={24}
-              height={24}
-              alt="forward"
-              onClick={() => skipTime(SKIP_TIME)}
-            />
+            <FaForward size={20} onClick={() => skipTime(SKIP_TIME)} />
           </div>
         </div>
-        <div className="flex items-center gap-6">
+
+        <div className="flex items-center gap-2">
+          <div className="w-[250px]">
+            <Progress
+              value={(currentTime / duration) * 100}
+              className="w-full"
+              max={duration || 100}
+            />
+          </div>
+
           <h2 className="text-16 font-normal text-white-2 max-md:hidden">
             {formatTime(duration)}
           </h2>
-          <div className="flex w-full gap-2">
-            <Image
-              src={isMuted ? "/icons/unmute.svg" : "/icons/mute.svg"}
-              width={24}
-              height={24}
-              alt="mute unmute"
-              onClick={toggleMute}
-              className="cursor-pointer"
-            />
-          </div>
+          {/* <div className="flex"> */}
+          <Image
+            src={isMuted ? "/icons/unmute.svg" : "/icons/mute.svg"}
+            width={24}
+            height={24}
+            alt="mute unmute"
+            onClick={toggleMute}
+            className="cursor-pointer"
+          />
+          {/* </div> */}
         </div>
 
         <HiOutlineXMark onClick={closePodcastPlayer} size="1.5rem" />

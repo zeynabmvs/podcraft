@@ -23,7 +23,7 @@ const LeftSidebar = () => {
   return (
     <aside
       className={cn("left_sidebar h-[calc(100vh-1px)]", {
-        "h-[calc(100vh-120px)]": audio?.audioUrl,
+        "h-[calc(100vh-85px)]": audio?.audioUrl,
       })}
     >
       <nav>
