@@ -9,21 +9,27 @@ import { useAudio } from "@/providers/AudioProvider";
 import { HiOutlineXMark, HiPauseCircle, HiPlayCircle } from "react-icons/hi2";
 import { Progress } from "@/components/ui/progress";
 
+const SKIP_TIME = 5;
+
 const PodcastPlayer = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
   const [isMuted, setIsMuted] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
-  const { audio, setAudio } = useAudio();
+  const { audio, setAudio, setStatus } = useAudio();
 
   const togglePlayPause = () => {
-    if (audioRef.current?.paused) {
-      audioRef.current?.play();
-      setIsPlaying(true);
-    } else {
-      audioRef.current?.pause();
-      setIsPlaying(false);
+    const audioElement = audioRef.current;
+
+    if (audioElement) {
+      if (audioElement.paused) {
+        audioElement.play();
+        setIsPlaying(true);
+      } else {
+        audioElement.pause();
+        setIsPlaying(false);
+      }
     }
   };
 
@@ -34,33 +40,13 @@ const PodcastPlayer = () => {
     }
   };
 
-  const forward = () => {
-    if (
-      audioRef.current &&
-      audioRef.current.currentTime &&
-      audioRef.current.duration &&
-      audioRef.current.currentTime + 5 < audioRef.current.duration
-    ) {
-      audioRef.current.currentTime += 5;
-    }
-  };
-
-  const rewind = () => {
-    if (audioRef.current && audioRef.current.currentTime - 5 > 0) {
-      audioRef.current.currentTime -= 5;
-    } else if (audioRef.current) {
-      audioRef.current.currentTime = 0;
-    }
-  };
-
+  // useEffect to keep track of audio's current time
   useEffect(() => {
-    const updateCurrentTime = () => {
-      if (audioRef.current) {
-        setCurrentTime(audioRef.current.currentTime);
-      }
-    };
-
     const audioElement = audioRef.current;
+
+    const updateCurrentTime = () =>
+      setCurrentTime(audioElement?.currentTime || 0);
+
     if (audioElement) {
       audioElement.addEventListener("timeupdate", updateCurrentTime);
 
@@ -70,10 +56,14 @@ const PodcastPlayer = () => {
     }
   }, []);
 
+  // Automatically play the audio when a new `audio` object is provided
   useEffect(() => {
     const audioElement = audioRef.current;
     if (audio?.audioUrl) {
       if (audioElement) {
+        audioElement.pause(); // Ensure it's paused before loading new audio
+        audioElement.load(); // Reload the element to reset state
+
         audioElement.play().then(() => {
           setIsPlaying(true);
         });
@@ -84,20 +74,35 @@ const PodcastPlayer = () => {
     }
   }, [audio]);
 
+  useEffect(() => {
+    if (isPlaying) {
+      setStatus("playing");
+    }
+  }, [isPlaying]);
+
   const handleLoadedMetadata = () => {
     if (audioRef.current) {
-      setDuration(audioRef.current.duration);
+      setDuration(audioRef.current.duration || 0);
     }
   };
 
   const handleAudioEnded = () => {
     setIsPlaying(false);
+    setStatus("ended");
   };
 
   const closePodcastPlayer = () => {
     audioRef.current?.pause();
     setIsPlaying(false);
     setAudio(undefined);
+  };
+
+  const skipTime = (seconds: number) => {
+    const audioElement = audioRef.current;
+    if (!audioElement) return;
+
+    const newTime = audioElement.currentTime + seconds;
+    audioElement.currentTime = Math.max(0, Math.min(newTime, duration));
   };
 
   return (
@@ -144,13 +149,15 @@ const PodcastPlayer = () => {
               width={24}
               height={24}
               alt="rewind"
-              onClick={rewind}
+              onClick={() => skipTime(-SKIP_TIME)}
             />
             <h2 className="text-12 font-bold text-white-4">-5</h2>
           </div>
-          {
-            isPlaying ? <HiPauseCircle size="2.5rem" onClick={togglePlayPause}/> : <HiPlayCircle  size="2.5rem" onClick={togglePlayPause}/>
-          }
+          {isPlaying ? (
+            <HiPauseCircle size="2.5rem" onClick={togglePlayPause} />
+          ) : (
+            <HiPlayCircle size="2.5rem" onClick={togglePlayPause} />
+          )}
           <div className="flex items-center gap-1.5">
             <h2 className="text-12 font-bold text-white-4">+5</h2>
             <Image
@@ -158,7 +165,7 @@ const PodcastPlayer = () => {
               width={24}
               height={24}
               alt="forward"
-              onClick={forward}
+              onClick={() => skipTime(SKIP_TIME)}
             />
           </div>
         </div>

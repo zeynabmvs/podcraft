@@ -8,6 +8,9 @@ const AudioContext = createContext<AudioContextType | undefined>(undefined);
 
 const AudioProvider = ({ children }: { children: React.ReactNode }) => {
   const [audio, setAudio] = useState<AudioProps | undefined>(undefined);
+  const [status, setStatus] = useState<"playing" | "ended" | undefined>(
+    undefined
+  );
   const pathname = usePathname();
 
   useEffect(() => {
@@ -15,7 +18,7 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
   }, [pathname]);
 
   return (
-    <AudioContext.Provider value={{ audio, setAudio }}>
+    <AudioContext.Provider value={{ audio, setAudio, status, setStatus }}>
       {children}
     </AudioContext.Provider>
   );

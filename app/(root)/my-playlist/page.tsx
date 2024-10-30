@@ -5,8 +5,13 @@ import { api } from "@/convex/_generated/api";
 import PodcastRowItem from "@/components/PodcastRowItem";
 import { MultiplePodcastRowsSkeleton } from "@/components/skeletons";
 import { FaPlay } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { useAudio } from "@/providers/AudioProvider";
+
 const page = () => {
   const clerkData = useUser();
+  const [currentIndex, setCurrentIndex] = useState(-1); // Track the current playing podcast
+  const { audio, setAudio, status } = useAudio(); // Access audio context
 
   const user = useQuery(api.users.getUserById, {
     clerkId: clerkData?.user?.id || "",
@@ -16,12 +21,43 @@ const page = () => {
     podcastIds: user?.playlist || [],
   });
 
-  const playAll = () => {};
+  const handlePlayAll = () => {
+    setCurrentIndex(0); // Start from the first podcast
+  };
+
+  useEffect(() => {
+    if (status === "ended") {
+      setCurrentIndex((prev) => prev + 1);
+    }
+  }, [status]);
+
+  useEffect(() => {
+    if (playlistPodcasts && playlistPodcasts?.length >= currentIndex) {
+      const currentPodcast = playlistPodcasts[currentIndex];
+
+      if (currentPodcast) {
+        setAudio({
+          title: currentPodcast.podcastTitle!,
+          audioUrl: currentPodcast.audioUrl!,
+          author: currentPodcast.author!,
+          imageUrl: currentPodcast.imageUrl!,
+          podcastId: currentPodcast._id!,
+        });
+      }
+    }
+  }, [currentIndex]);
 
   return (
     <section className="pt-9">
-      <header>
-        <h1 className="text-20 font-bold text-white-1">My Playlist</h1>
+      <header className="flex gap-2 items-center">
+        <h1 className="text-20 font-bold text-white-1 mr-2">My Playlist</h1>
+        {playlistPodcasts && playlistPodcasts?.length > 0 && (
+          <FaPlay
+            className="cursor-pointer"
+            size={18}
+            onClick={handlePlayAll}
+          />
+        )}
       </header>
 
       {
