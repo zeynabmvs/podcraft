@@ -25,8 +25,6 @@ function AllPodcasts() {
     <>
       <section className="flex flex-col gap-5">
         <h1 className="text-20 font-bold text-white-1">Latest Podcasts</h1>
-        <RowSkeleton />
-
         {
           <div className="podcast_grid">
             {latestPodcasts?.map(
