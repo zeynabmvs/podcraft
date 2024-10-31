@@ -2,9 +2,10 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export function CardSkeleton() {
   return (
-    <div>
-      <Skeleton className=" size-[174px] 2xl:size-[200px] rounded-xl" />
-      <div className="flex flex-col mt-2">
+    <div className="flex flex-col gap-2">
+      {/* TODO: width of image skeleton should be auto to parent's width */}
+      <Skeleton className="size-[157px] 2xl:size-[200px] rounded-lg" />
+      <div className="flex flex-col">
         <Skeleton className=" h-4 rounded w-3/4 mb-2" />
         <Skeleton className=" h-4 rounded w-5/6" />
       </div>

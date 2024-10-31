@@ -17,6 +17,8 @@ const Discover = ({
     search: search || "",
   });
 
+  // TODO: for emty search it should be paginated using api.podcastst.getAllPodcastsPaginated
+
   return (
     <div className="flex flex-col gap-9">
       <Searchbar />

@@ -1,5 +1,5 @@
 import { ConvexError, v } from "convex/values";
-
+import { paginationOptsValidator } from "convex/server";
 import { mutation, query } from "./_generated/server";
 
 // create podcast mutation
@@ -153,7 +153,7 @@ export const getPodcastBySearch = query({
   },
   handler: async (ctx, args) => {
     if (args.search === "") {
-      return await ctx.db.query("podcasts").order("desc").collect();
+      return [];
     }
 
     const authorSearch = await ctx.db
@@ -176,12 +176,18 @@ export const getPodcastBySearch = query({
       return titleSearch;
     }
 
-    return await ctx.db
+    const descriptionSearch = await ctx.db
       .query("podcasts")
       .withSearchIndex("search_body", (q) =>
-        q.search("podcastDescription" || "podcastTitle", args.search)
+        q.search("podcastDescription", args.search)
       )
       .take(10);
+
+    if (descriptionSearch.length > 0) {
+      return descriptionSearch;
+    }
+
+    return [];
   },
 });
 
@@ -223,9 +229,14 @@ export const deletePodcast = mutation({
   },
 });
 
-// this query will get the 4 latest podcasts.
-export const getLatestPodcasts = query({
-  handler: async (ctx) => {
-    return await ctx.db.query("podcasts").order("desc").take(4);
+// this query will get the 4 latest podcasts
+export const getAllPodcastsPaginated = query({
+  args: { paginationOpts: paginationOptsValidator },
+  handler: async (ctx, args) => {
+    const foo = await ctx.db
+      .query("podcasts")
+      .order("desc")
+      .paginate(args.paginationOpts);
+    return foo;
   },
 });
