@@ -3,21 +3,18 @@ import { useEffect, useState } from "react";
 const useNetworkStatus = () => {
   const [isOnline, setOnline] = useState<boolean>(true);
 
-  const updateNetworkStatus = () => {
-    setOnline(navigator.onLine);
-  };
-
   useEffect(() => {
-    window.addEventListener("load", updateNetworkStatus);
-    window.addEventListener("online", updateNetworkStatus);
-    window.addEventListener("offline", updateNetworkStatus);
+    const handleOnline = () => setOnline(true);
+    const handleOffline = () => setOnline(false);
+
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
 
     return () => {
-        window.removeEventListener("load", updateNetworkStatus);
-        window.removeEventListener("online", updateNetworkStatus);
-        window.removeEventListener("offline", updateNetworkStatus);
+        window.removeEventListener("online", handleOnline);
+        window.removeEventListener("offline", handleOffline);
     };
-  }, [navigator.onLine]);
+  }, []);
 
   return { isOnline };
 };
