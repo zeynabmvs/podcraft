@@ -55,7 +55,7 @@ const RightSidebar = () => {
                   height={44}
                   className="aspect-square rounded-lg"
                 />
-                <h2 className="text-14 font-semibold text-white-1">
+                <h2 className="text-14 font-medium text-white-1">
                   {podcaster.name}
                 </h2>
               </figure>
