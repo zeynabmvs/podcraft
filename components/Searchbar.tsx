@@ -16,7 +16,7 @@ const Searchbar = () => {
   useEffect(() => {
     if (debouncedValue) {
       router.push(`/discover?search=${debouncedValue}`);
-    } else if (!debouncedValue && pathname === "/discover")
+    } else if (!debouncedValue && pathname === "/discover" && search)
       router.push("/discover");
   }, [router, pathname, debouncedValue]);
 
@@ -27,7 +27,7 @@ const Searchbar = () => {
         placeholder="Search for podcasts or authors"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        onLoad={() => setSearch("")}
+        // onLoad={() => setSearch("")}
       />
       <HiMagnifyingGlass size={18} className="absolute left-4 top-3.5" />
     </div>

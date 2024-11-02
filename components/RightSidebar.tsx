@@ -19,7 +19,7 @@ const RightSidebar = () => {
 
   return (
     <section
-      className={cn("right_sidebar h-[calc(100vh-5px)]", {
+      className={cn("right_sidebar h-[calc(100vh-1px)]", {
         "h-[calc(100vh-120px)]": "",
       })}
     >

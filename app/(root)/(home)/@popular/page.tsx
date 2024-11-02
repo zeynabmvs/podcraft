@@ -8,7 +8,6 @@ import { MultiplePodcastRowsSkeleton } from "@/components/skeletons";
 
 function PopularPodcasts() {
   const podcasts = useQuery(api.podcasts.getTrendingPodcasts);
-  console.log("popularsssss");
   return (
     <section>
       <Header

@@ -1,35 +1,7 @@
-"use client";
-
-import PodcastCard from "@/components/PodcastCard";
-import { useQuery } from "convex/react";
-import { api } from "@/convex/_generated/api";
-import { RowSkeleton } from "@/components/skeletons";
+import Searchbar from "@/components/Searchbar";
 
 function Home() {
-  // const trendingPodcasts = useQuery(api.podcasts.getTrendingPodcasts);
-
-  return (
-    <section className="flex flex-col gap-5">
-      {/* <h1 className="text-20 font-bold text-white-1">Trending Podcasts</h1>
-      {!trendingPodcasts ? (
-        <RowSkeleton />
-      ) : (
-        <div className="podcast_grid">
-          {trendingPodcasts
-            ?.slice(0, 4)
-            .map(({ _id, podcastTitle, podcastDescription, imageUrl }) => (
-              <PodcastCard
-                key={_id}
-                imgUrl={imageUrl as string}
-                title={podcastTitle}
-                description={podcastDescription}
-                podcastId={_id}
-              />
-            ))}
-        </div>
-      )} */}
-    </section>
-  );
+  return <></>;
 }
 
 export default Home;

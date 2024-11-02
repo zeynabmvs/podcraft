@@ -152,13 +152,10 @@ export const getPodcastBySearch = query({
     search: v.string(),
   },
   handler: async (ctx, args) => {
-    if (args.search === "") {
-      return await ctx.db.query("podcasts").order("desc").collect();
-    }
     
-    // if (args.search === "") {
-    //   return [];
-    // }
+    if (args.search === "" || !args.search) {
+      return await ctx.db.query("podcasts").order("desc").take(8);
+    }
 
     const authorSearch = await ctx.db
       .query("podcasts")
