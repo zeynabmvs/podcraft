@@ -1,6 +1,6 @@
 import { PodcastCardProps } from "@/types";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter } from "nextjs-toploader/app";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 

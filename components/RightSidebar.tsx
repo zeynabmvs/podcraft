@@ -8,7 +8,7 @@ import Header from "@/components/Header";
 import Carousel from "./Carousel";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { useRouter } from "next/navigation";
+import { useRouter } from "nextjs-toploader/app";
 import { cn } from "@/lib/utils";
 import { HiChevronRight } from "react-icons/hi2";
 

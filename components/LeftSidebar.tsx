@@ -3,7 +3,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { sidebarLinks } from "@/constants/index";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import { useRouter } from "nextjs-toploader/app";
+
 import { clsx } from "clsx";
 import { SignedIn, SignedOut, useClerk, useUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
@@ -34,7 +36,7 @@ const LeftSidebar = () => {
         >
           <Image src="/logo.png" width={40} height={40} alt="logo" />
           <h1 className="text-24 font-extrabold text-white max-lg:hidden">
-            Podcraft  
+            Podcraft
           </h1>
         </Link>
 

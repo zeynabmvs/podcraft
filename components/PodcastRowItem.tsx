@@ -1,7 +1,7 @@
 import { PodcastRowItemProps } from "@/types/index";
 import Image from "next/image";
 import { formatTime } from "@/lib/formatTime";
-import { useRouter } from "next/navigation";
+import { useRouter } from "nextjs-toploader/app";
 import { HiClock, HiPlay } from "react-icons/hi";
 import { useAudio } from "@/providers/AudioProvider";
 import { PiHeadphonesFill } from "react-icons/pi";

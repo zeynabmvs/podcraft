@@ -1,7 +1,8 @@
 "use client";
+
 import { useMutation } from "convex/react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter } from "nextjs-toploader/app";
 import { useState, useEffect } from "react";
 import { api } from "@/convex/_generated/api";
 import { useAudio } from "@/providers/AudioProvider";

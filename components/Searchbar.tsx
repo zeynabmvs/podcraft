@@ -2,9 +2,10 @@
 
 import React, { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useDebounce } from "@/lib/useDebounce";
 import { HiMagnifyingGlass } from "react-icons/hi2";
+import { useRouter } from "nextjs-toploader/app";
 
 const Searchbar = () => {
   const [search, setSearch] = useState("");
