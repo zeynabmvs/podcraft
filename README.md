@@ -25,12 +25,12 @@ Podcraft is a feature-rich web application designed for podcast enthusiasts. It 
 ## Screenshots
 
 ### Home Page
-![Home Page](screenshots/home.png)  
-*The home page showcasing featured podcasts.*
+![Home Page](/public/screenshots/screenshot1.png)  
+*The home page showcasing featured podcasts. Desktop & tablet views*
 
-### AI Podcast Creation
-![AI Podcast Creation](screenshots/ai-creation.png)  
-*Create your own podcast using AI-powered text-to-speech and image generation.*
+### Other pages
+![AI Podcast Creation](/public/screenshots/screenshot2.png)  
+*Other pages. mobile view*
 
 ## Getting Started
 
