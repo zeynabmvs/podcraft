@@ -63,5 +63,23 @@ Podcraft is a feature-rich web application designed for podcast enthusiasts. It 
 
 Explore the live demo here: [Podcraft on Vercel](https://podcraft-roan.vercel.app/)
 
+## Credits
+### Original Tutorial
+This project started as a tutorial from JS Mastery. The original tutorial provided the foundation for the project, including the basic structure, design, and functionality.
+Tutorial Link: [JS Mastery Podcast App Tutorial](jsmastery.pro)
+
+### My Contributions
+After completing the tutorial, I made the following improvements and added new features:
+
+Added Feature 1: Allowed users to upload their own audio files instead of relying on AI-generated audio.
+
+Added Feature 2: Added the ability to add podcasts to playlist and play them in order
+
+Added feature 3: Implemented the ability to add podcasts to a playlist and play them in sequential order.
+
+Code Improvements: Refactored the codebase for better readability, maintainability, and performance.
+
+UI Enhancements: Improved the overall user interface by adding animations for interactivity and ensuring a better design for mobile responsiveness.
+
 
 Feel free to contribute, report issues, or suggest improvements! Your feedback is highly appreciated.
