@@ -66,7 +66,7 @@ Explore the live demo here: [Podcraft on Vercel](https://podcraft-roan.vercel.ap
 ## Credits
 ### Original Tutorial
 This project started as a tutorial from JS Mastery. The original tutorial provided the foundation for the project, including the basic structure, design, and functionality.
-Tutorial Link: [JS Mastery Podcast App Tutorial](jsmastery.pro)
+Tutorial Link: [JS Mastery Podcast App Tutorial](https://jsmastery.pro)
 
 ### My Contributions
 After completing the tutorial, I made the following improvements and added new features:

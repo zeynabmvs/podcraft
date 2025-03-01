@@ -3,13 +3,13 @@
 import { useMutation } from "convex/react";
 import Image from "next/image";
 import { useRouter } from "nextjs-toploader/app";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { api } from "@/convex/_generated/api";
 import { useAudio } from "@/providers/AudioProvider";
 import { PodcastDetailPlayerProps } from "@/types";
 import { HiPlayCircle } from "react-icons/hi2";
-import LoaderSpinner from "./LoaderSpinner";
-import { Button } from "./ui/button";
+import LoaderSpinner from "@/components/common/LoaderSpinner";
+import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 import { RiPlayListAddFill } from "react-icons/ri";

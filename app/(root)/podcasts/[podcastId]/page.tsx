@@ -1,14 +1,13 @@
 "use client";
 
-import EmptyState from "@/components/EmptyState";
-import LoaderSpinner from "@/components/LoaderSpinner";
-import PodcastCard from "@/components/PodcastCard";
-import PodcastDetailPlayer from "@/components/PodcastDetailPlayer";
+import EmptyState from "@/components/common/EmptyState";
+import LoaderSpinner from "@/components/common/LoaderSpinner";
+import PodcastCard from "@/components/podcast/PodcastCard";
+import PodcastDetailPlayer from "@/components/podcast/PodcastDetailPlayer";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { useUser } from "@clerk/nextjs";
 import { useQuery } from "convex/react";
-import Image from "next/image";
 import React from "react";
 import { PiHeadphonesFill } from "react-icons/pi";
 

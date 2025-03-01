@@ -1,12 +1,10 @@
 "use client";
 
-import LeftSidebar from "@/components/LeftSidebar";
-import MobileNav from "@/components/MobileNav";
-import RightSidebar from "@/components/RightSidebar";
+import LeftSidebar from "@/components/layout/LeftSidebar";
+import MobileNav from "@/components/layout/MobileNav";
 import Image from "next/image";
 import { Toaster } from "@/components/ui/toaster";
-import PodcastPlayer from "@/components/StickyPlayer";
-import ErrorBoundary from "@/components/ErrorBoundary";
+import PodcastPlayer from "@/components/partials/StickyPlayer";
 
 export default function RootLayout({
   children,
@@ -31,11 +29,7 @@ export default function RootLayout({
             </div>
           </div>
         </section>
-        <ErrorBoundary fallback={<div></div>}>
-          <RightSidebar />
-        </ErrorBoundary>
       </main>
-
       <PodcastPlayer />
     </div>
   );

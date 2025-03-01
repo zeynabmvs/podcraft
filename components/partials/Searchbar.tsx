@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { usePathname } from "next/navigation";
-import { useDebounce } from "@/lib/useDebounce";
+import { useDebounce } from "@/hooks/use-debounce";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { useRouter } from "nextjs-toploader/app";
 

@@ -1,7 +1,7 @@
 import Image from "next/image";
-import LeftSidebar from "@/components/LeftSidebar";
+import LeftSidebar from "@/components/layout/LeftSidebar";
 import { Button } from "@/components/ui/button";
-import MobileNav from "@/components/MobileNav";
+import MobileNav from "@/components/layout/MobileNav";
 import { Toaster } from "@/components/ui/toaster";
 
 export default function NotFound(): JSX.Element {

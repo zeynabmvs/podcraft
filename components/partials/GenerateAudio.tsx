@@ -1,9 +1,9 @@
 import { UseGenerateAudioProps } from "@/types";
 import { GenerateAudioProps } from "@/types";
 import React, { useState, useRef, useEffect } from "react";
-import { Label } from "./ui/label";
-import { Textarea } from "./ui/textarea";
-import { Button } from "./ui/button";
+import { Label } from "../ui/label";
+import { Textarea } from "../ui/textarea";
+import { Button } from "../ui/button";
 import { Loader } from "lucide-react";
 import { useAction, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
@@ -138,12 +138,16 @@ const GenerateAudio = ({
     } catch (error) {
       console.log(error);
       setIsFileUploading(false);
-      toast({ title: "Error uploading, Try again later", variant: "destructive" });
+      toast({
+        title: "Error uploading, Try again later",
+        variant: "destructive",
+      });
     }
   };
 
-
-  const handleFileSelection = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileSelection = async (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     e.preventDefault();
 
     try {
@@ -297,7 +301,7 @@ const GenerateAudio = ({
 
             <div className="flex flex-col items-center gap-1">
               <h2 className="text-12 font-bold text-primary-1">
-                {!isFileUploading ? "Click to upload audio" : " " }
+                {!isFileUploading ? "Click to upload audio" : " "}
               </h2>
               <p className="text-12 font-normal text-gray-1">
                 format: MP3, WAV (max. 2000KB)

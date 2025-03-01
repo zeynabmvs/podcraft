@@ -19,7 +19,6 @@ import { useRouter } from "nextjs-toploader/app";
 import { HiBars3BottomRight } from "react-icons/hi2";
 import { IoIosLogOut } from "react-icons/io";
 import { GoSignIn } from "react-icons/go";
-import { SpaceIcon } from "lucide-react";
 
 const MobileNav = () => {
   const pathname = usePathname();

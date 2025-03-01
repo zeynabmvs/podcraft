@@ -1,9 +1,9 @@
 "use client";
 
-import PodcastCard from "@/components/PodcastCard";
+import PodcastCard from "@/components/podcast/PodcastCard";
 import { usePaginatedQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { RowSkeleton } from "@/components/skeletons";
+import { RowSkeleton } from "@/components/skeleton/index";
 import { Button } from "@/components/ui/button";
 
 const PER_PAGE = 4;

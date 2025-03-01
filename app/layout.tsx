@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Manrope, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import ConvexClerkProvider from "@/providers/ConvexClerkProvider";
 import "@/app/globals.css";
 import AudioProvider from "@/providers/AudioProvider";
 import NextTopLoader from "nextjs-toploader";
-import NetworkStatus from "@/components/NetworkStatus";
+import NetworkStatus from "@/components/partials/NetworkStatus";
 
 const inter = Inter({ subsets: ["latin"] });
 

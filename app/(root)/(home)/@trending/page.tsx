@@ -2,8 +2,8 @@
 
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { RowSkeleton } from "@/components/skeletons";
-import PodcastCard from "@/components/PodcastCard";
+import { RowSkeleton } from "@/components/skeleton/index";
+import PodcastCard from "@/components/podcast/PodcastCard";
 
 function TrendingPodcasts() {
   const trendingPodcasts = useQuery(api.podcasts.getTrendingPodcasts);

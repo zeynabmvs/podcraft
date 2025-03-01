@@ -1,7 +1,7 @@
 "use client";
 import useNetworkStatus from "@/hooks/use-network-status";
 import clsx from "clsx";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 function NetworkStatus() {
   const { isOnline } = useNetworkStatus();

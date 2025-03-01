@@ -2,8 +2,8 @@
 import { useUser } from "@clerk/nextjs";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import PodcastRowItem from "@/components/PodcastRowItem";
-import { MultiplePodcastRowsSkeleton } from "@/components/skeletons";
+import PodcastRowItem from "@/components/podcast/PodcastRowItem";
+import { MultiplePodcastRowsSkeleton } from "@/components/skeleton/index";
 import { FaPlay } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { useAudio } from "@/providers/AudioProvider";

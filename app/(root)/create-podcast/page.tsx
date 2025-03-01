@@ -16,8 +16,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
 import { Textarea } from "@/components/ui/textarea";
-import GenerateAudio from "@/components/GenerateAudio";
-import GenerateThumbnail from "@/components/GenerateThumbnail";
+import GenerateAudio from "@/components/partials/GenerateAudio";
+import GenerateThumbnail from "@/components/partials/GenerateThumbnail";
 import { Loader } from "lucide-react";
 import { Id } from "@/convex/_generated/dataModel";
 import { useToast } from "@/hooks/use-toast";

@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 import { useAudio } from "@/providers/AudioProvider";
 import { PodcastProps, ProfileCardProps } from "@/types";
 import { HiPlayCircle } from "react-icons/hi2";
-import LoaderSpinner from "./LoaderSpinner";
-import { Button } from "./ui/button";
+import LoaderSpinner from "@/components/common/LoaderSpinner";
+import { Button } from "@/components/ui/button";
 import { PiHeadphonesFill } from "react-icons/pi";
 
 const ProfileCard = ({

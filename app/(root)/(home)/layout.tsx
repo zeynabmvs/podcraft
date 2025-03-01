@@ -1,4 +1,4 @@
-import Searchbar from "@/components/Searchbar";
+import Searchbar from "@/components/partials/Searchbar";
 
 export default function Layout({
   trending,

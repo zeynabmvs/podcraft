@@ -1,11 +1,11 @@
 "use client";
 
-import EmptyState from "@/components/EmptyState";
-import PodcastCard from "@/components/PodcastCard";
-import Searchbar from "@/components/Searchbar";
+import EmptyState from "@/components/common/EmptyState";
+import PodcastCard from "@/components/podcast/PodcastCard";
+import Searchbar from "@/components/partials/Searchbar";
 import { api } from "@/convex/_generated/api";
 import { useQuery } from "convex/react";
-import { GridSkeleton } from "@/components/skeletons";
+import { GridSkeleton } from "@/components/skeleton/index";
 import { useEffect } from "react";
 
 const Discover = ({
@@ -13,7 +13,6 @@ const Discover = ({
 }: {
   searchParams: { search: string };
 }) => {
-
   const podcastsData = search
     ? useQuery(api.podcasts.getPodcastBySearch, { search })
     : useQuery(api.podcasts.getTrendingPodcasts);
