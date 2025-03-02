@@ -6,7 +6,6 @@ import Searchbar from "@/components/partials/Searchbar";
 import { api } from "@/convex/_generated/api";
 import { useQuery } from "convex/react";
 import { GridSkeleton } from "@/components/skeleton/index";
-import { useEffect } from "react";
 
 const Discover = ({
   searchParams: { search },
@@ -15,7 +14,7 @@ const Discover = ({
 }) => {
   const podcastsData = search
     ? useQuery(api.podcasts.getPodcastBySearch, { search })
-    : useQuery(api.podcasts.getTrendingPodcasts);
+    : useQuery(api.podcasts.getAllPodcasts);
 
   return (
     <div className="flex flex-col gap-9">

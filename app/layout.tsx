@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import ConvexClerkProvider from "@/providers/ConvexClerkProvider";
 import "@/app/globals.css";
-import AudioProvider from "@/providers/AudioProvider";
 import NextTopLoader from "nextjs-toploader";
 import NetworkStatus from "@/components/partials/NetworkStatus";
 
@@ -30,7 +29,7 @@ export default function RootLayout({
             showSpinner={false}
             shadow="0 0 0 #FF4C4C,0 0 0 #FF4C4C"
           />
-          <AudioProvider>{children}</AudioProvider>
+          {children}
           <NetworkStatus />
         </body>
       </html>

@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { sidebarLinks } from "@/constants/index";
 import { usePathname } from "next/navigation";
 import { useRouter } from "nextjs-toploader/app";
@@ -14,6 +13,7 @@ import { cn } from "@/lib/utils";
 import { HiUser } from "react-icons/hi";
 import { IoIosLogOut } from "react-icons/io";
 import { GoSignIn } from "react-icons/go";
+import PodcraftLogo from '@/components/partials/PodcraftLogo'
 
 const LeftSidebar = () => {
   const pathname = usePathname();
@@ -29,16 +29,8 @@ const LeftSidebar = () => {
       })}
     >
       <nav>
-        <Link
-          key="logo"
-          href="/"
-          className="flex cursor-pointer items-center gap-1 pb-10 max-lg:justify-center lg:pl-8"
-        >
-          <Image src="/logo.png" width={40} height={40} alt="logo" />
-          <h1 className="text-24 font-extrabold text-white max-lg:hidden">
-            Podcraft
-          </h1>
-        </Link>
+      <PodcraftLogo />
+
 
         {sidebarLinks.map(({ route, label, icon: Icon }) => {
           const isActive =
@@ -86,7 +78,7 @@ const LeftSidebar = () => {
         <div className="flex-center lg:w-[80%] pb-14 mx-auto">
           <Button
             asChild
-            className="text-16 w-full bg-primary-1 font-extrabold"
+            className="text-16 w-full bg-primary-1 font-medium"
           >
             <Link href="/sign-in" className="flex gap-1">
               <IoIosLogOut size={20} />
@@ -98,7 +90,7 @@ const LeftSidebar = () => {
       <SignedIn>
         <div className="flex-center lg:w-[80%] pb-14 mx-auto">
           <Button
-            className="text-16 w-full bg-primary-1 font-extrabold flex gap-1"
+            className="text-16 w-full bg-primary-1 font-medium flex gap-1"
             onClick={() => signOut(() => router.push("/"))}
           >
             <GoSignIn size={20} />

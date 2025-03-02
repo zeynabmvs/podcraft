@@ -5,7 +5,7 @@ import { RiPlayListFill } from "react-icons/ri";
 export const sidebarLinks = [
   {
     icon: HiHome,
-    route: "/",
+    route: "/home",
     label: "Home",
   },
   {
