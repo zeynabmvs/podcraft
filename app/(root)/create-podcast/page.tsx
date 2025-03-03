@@ -14,7 +14,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Textarea } from "@/components/ui/textarea";
 import GenerateAudio from "@/components/partials/GenerateAudio";
 import GenerateThumbnail from "@/components/partials/GenerateThumbnail";
@@ -73,7 +73,7 @@ const CreatePodcast = () => {
         throw new Error("Please generate audio and image");
       }
 
-      const podcast = await createPodcast({
+      await createPodcast({
         podcastTitle: data.podcastTitle,
         podcastDescription: data.podcastDescription,
         audioUrl,

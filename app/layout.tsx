@@ -4,6 +4,7 @@ import ConvexClerkProvider from "@/providers/ConvexClerkProvider";
 import "@/app/globals.css";
 import NextTopLoader from "nextjs-toploader";
 import NetworkStatus from "@/components/partials/NetworkStatus";
+import AudioProvider from "@/providers/AudioProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,7 +30,7 @@ export default function RootLayout({
             showSpinner={false}
             shadow="0 0 0 #FF4C4C,0 0 0 #FF4C4C"
           />
-          {children}
+          <AudioProvider>{children}</AudioProvider>
           <NetworkStatus />
         </body>
       </html>

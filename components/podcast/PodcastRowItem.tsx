@@ -7,16 +7,13 @@ import { useAudio } from "@/providers/AudioProvider";
 import { PiHeadphonesFill } from "react-icons/pi";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { updatePodcastViews } from "@/convex/podcasts";
 
 const PodcastRowItem = ({
   imgUrl,
   title,
-  description,
   podcastId,
   views,
   audioDuration,
-  index,
   audioUrl,
   author,
 }: PodcastRowItemProps) => {

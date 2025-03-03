@@ -8,10 +8,10 @@ import { FaPlay } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { useAudio } from "@/providers/AudioProvider";
 
-const page = () => {
+const Page = () => {
   const clerkData = useUser();
   const [currentIndex, setCurrentIndex] = useState(-1); // Track the current playing podcast
-  const { audio, setAudio, status } = useAudio(); // Access audio context
+  const { setAudio, status } = useAudio(); // Access audio context
 
   const user = useQuery(api.users.getUserById, {
     clerkId: clerkData?.user?.id || "",
@@ -45,7 +45,7 @@ const page = () => {
         });
       }
     }
-  }, [currentIndex]);
+  }, [currentIndex, playlistPodcasts, setAudio]);
 
   return (
     <section className="pt-9">
@@ -100,4 +100,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

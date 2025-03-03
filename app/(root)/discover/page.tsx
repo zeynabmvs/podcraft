@@ -8,25 +8,27 @@ import { useQuery } from "convex/react";
 import { GridSkeleton } from "@/components/skeleton/index";
 
 const Discover = ({
-  searchParams: { search },
-}: {
-  searchParams: { search: string };
+//   searchParams: { search },
+// }: {
+//   searchParams: { search: string };
 }) => {
-  const podcastsData = search
-    ? useQuery(api.podcasts.getPodcastBySearch, { search })
-    : useQuery(api.podcasts.getAllPodcasts);
+  // const podcastsData = search
+  //   ? useQuery(api.podcasts.getPodcastBySearch, { search })
+  //   : useQuery(api.podcasts.getAllPodcasts);
 
+  const podcastsData = useQuery(api.podcasts.getAllPodcasts);
+  
   return (
     <div className="flex flex-col gap-9">
       <Searchbar />
 
       <div className="flex flex-col gap-9">
         <h1 className="text-20 font-bold text-white-1">
-          {!search ? (
+          {/* {!search ? ( */}
             <span className="text-white-2">Trending now</span>
-          ) : (
-            <span className="text-white-2">Search results for {search}</span>
-          )}
+          {/* ) : ( */}
+            {/* <span className="text-white-2">Search results for {search}</span> */}
+          {/* )} */}
         </h1>
         {podcastsData ? (
           <>

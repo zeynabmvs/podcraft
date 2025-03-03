@@ -30,7 +30,7 @@ export const usePlaylist = () => {
   };
 
   // Placeholder for remove function you will add later
-  const removeFromPlaylist = async (podcastId: string) => {
+  const removeFromPlaylist = async () => {
     //TODO: Logic for removing from the playlist (if needed)
   };
 

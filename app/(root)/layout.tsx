@@ -5,17 +5,17 @@ import MobileNav from "@/components/layout/MobileNav";
 import Image from "next/image";
 import { Toaster } from "@/components/ui/toaster";
 import PodcastPlayer from "@/components/partials/StickyPlayer";
-import ConvexClerkProvider from "@/providers/ConvexClerkProvider";
-import AudioProvider from "@/providers/AudioProvider";
+// import ConvexClerkProvider from "@/providers/ConvexClerkProvider";
+// import AudioProvider from "@/providers/AudioProvider";
 
-export default function RootLayout({
+export default function Layout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     // <ConvexClerkProvider>
-      <AudioProvider>
+      // <AudioProvider>
         <div className="relative flex flex-col">
           <main className="relative flex bg-black-3">
             <LeftSidebar />
@@ -41,7 +41,7 @@ export default function RootLayout({
           </main>
           <PodcastPlayer />
         </div>
-      </AudioProvider>
+      // </AudioProvider>
     //  </ConvexClerkProvider>
   );
 }

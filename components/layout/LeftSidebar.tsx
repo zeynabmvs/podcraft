@@ -3,34 +3,30 @@
 import Link from "next/link";
 import { sidebarLinks } from "@/constants/index";
 import { usePathname } from "next/navigation";
-import { useRouter } from "nextjs-toploader/app";
 
 import { clsx } from "clsx";
 import { SignedIn, SignedOut, useClerk, useUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
-import { useAudio } from "@/providers/AudioProvider";
+// import { useAudio } from "@/providers/AudioProvider";
 import { cn } from "@/lib/utils";
 import { HiUser } from "react-icons/hi";
 import { IoIosLogOut } from "react-icons/io";
 import { GoSignIn } from "react-icons/go";
-import PodcraftLogo from '@/components/partials/PodcraftLogo'
+import PodcraftLogo from "@/components/partials/PodcraftLogo";
 
 const LeftSidebar = () => {
   const pathname = usePathname();
-  const router = useRouter();
   const { signOut } = useClerk();
-  const { audio } = useAudio();
+  // const { audio } = useAudio();
   const { user } = useUser();
+
 
   return (
     <aside
-      className={cn("left_sidebar h-[calc(100vh-1px)]", {
-        "h-[calc(100vh-85px)]": audio?.audioUrl,
-      })}
+      className={cn("left_sidebar h-[calc(100vh-1px)]")}
     >
       <nav>
-      <PodcraftLogo />
-
+        <PodcraftLogo />
 
         {sidebarLinks.map(({ route, label, icon: Icon }) => {
           const isActive =
@@ -76,10 +72,7 @@ const LeftSidebar = () => {
 
       <SignedOut>
         <div className="flex-center lg:w-[80%] pb-14 mx-auto">
-          <Button
-            asChild
-            className="text-16 w-full bg-primary-1 font-medium"
-          >
+          <Button asChild className="text-16 w-full bg-primary-1 font-medium">
             <Link href="/sign-in" className="flex gap-1">
               <IoIosLogOut size={20} />
               <span className="hidden lg:block">Sign in</span>
@@ -91,7 +84,7 @@ const LeftSidebar = () => {
         <div className="flex-center lg:w-[80%] pb-14 mx-auto">
           <Button
             className="text-16 w-full bg-primary-1 font-medium flex gap-1"
-            onClick={() => signOut(() => router.push("/"))}
+            onClick={() => signOut()}
           >
             <GoSignIn size={20} />
             <span className="hidden lg:block">Log Out</span>

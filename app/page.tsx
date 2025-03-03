@@ -45,7 +45,7 @@ function LandingPage() {
               <span className="font-bold px-1">Create, share and discover</span>{" "}
               stories effortlessly with Podcraft.
               <br className="hidden lg:inline-block" />
-              Whether you're a beginner or a pro, our platform makes podcasting
+              Whether you&apos;re a beginner or a pro, our platform makes podcasting
               simple and fun.
             </h2>
             <div className="mt-12 flex flex-col gap-4 items-center">

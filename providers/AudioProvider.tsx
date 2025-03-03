@@ -27,7 +27,7 @@ const AudioProvider = ({ children }: { children: React.ReactNode }) => {
 export const useAudio = () => {
   const context = useContext(AudioContext);
 
-  if (!context) throw new Error("useAdio must be used whitin an audioProvider");
+  if (!context) throw new Error("useAudio must be used whitin an audioProvider");
 
   return context;
 };
